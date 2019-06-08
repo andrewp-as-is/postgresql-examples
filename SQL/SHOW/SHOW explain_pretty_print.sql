@@ -1,0 +1,1 @@
+SHOW explain_pretty_print;

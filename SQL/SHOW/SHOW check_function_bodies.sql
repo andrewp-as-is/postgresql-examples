@@ -1,0 +1,1 @@
+SHOW check_function_bodies;

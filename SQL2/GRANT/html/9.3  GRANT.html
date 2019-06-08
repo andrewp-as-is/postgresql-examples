@@ -1,0 +1,745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0056)http://www.postgresql.org/docs/9.3/static/sql-grant.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PostgreSQL: Documentation: 9.3: GRANT</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("/media/css/docs.css");</style>
+    <link rel="alternate stylesheet" media="screen" href="./9.3  GRANT_files/docs_large.css" type="text/css" title="Large Text" disabled="">
+    <script type="text/javascript" async="" src="./9.3  GRANT_files/ga.js"></script><script type="text/javascript" src="./9.3  GRANT_files/styleswitcher.js"></script>
+    <script type="text/javascript" src="./9.3  GRANT_files/monospacefix.js"></script></head><body><pre id="monotest" style="display: none;">&nbsp;</pre><p id="paratest" style="display: none;">&nbsp;</p><style type="text/css" media="screen">#docContainer tt, #docContainer pre, #docContainer code{font-size: 1.2em;}</style>
+
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="./9.3  GRANT_files/hdr_logo.png" width="206" height="80" alt="PostgreSQL"></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.3/">
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value=&#39;&#39;;" value="Search"><input id="submit" type="submit" value="Search">
+	</div>
+	</form>
+        <div id="docTextSize">Text Size: <a href="http://www.postgresql.org/docs/9.3/static/sql-grant.html#" onclick="setActiveStyleSheet(&#39;Normal Text&#39;); return false;" onkeypress="return false;" title="Normal Text Size">Normal</a> / <a href="http://www.postgresql.org/docs/9.3/static/sql-grant.html#" onclick="setActiveStyleSheet(&#39;Large Text&#39;); return false;" onkeypress="return false;" title="Large Text Size">Large</a></div>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> → <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> → <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> → <a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3</a>
+</div>
+<div id="docVersions">
+
+This page in other versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/9.2/static/sql-grant.html" title="This page in version 9.2">9.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.1/static/sql-grant.html" title="This page in version 9.1">9.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.0/static/sql-grant.html" title="This page in version 9.0">9.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.4/static/sql-grant.html" title="This page in version 8.4">8.4</a>
+	
+
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<b>9.3</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.3/static/sql-grant.html" title="This page in version 8.3" rel="nofollow">8.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.2/static/sql-grant.html" title="This page in version 8.2" rel="nofollow">8.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.1/static/sql-grant.html" title="This page in version 8.1" rel="nofollow">8.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.0/static/sql-grant.html" title="This page in version 8.0" rel="nofollow">8.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.4/static/sql-grant.html" title="This page in version 7.4" rel="nofollow">7.4</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.3/static/sql-grant.html" title="This page in version 7.3" rel="nofollow">7.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.2/static/sql-grant.html" title="This page in version 7.2" rel="nofollow">7.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.1/static/sql-grant.html" title="This page in version 7.1" rel="nofollow">7.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/devel/static/sql-grant.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="5" align="center" valign="bottom"><a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3beta2 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title="FETCH" href="http://www.postgresql.org/docs/9.3/static/sql-fetch.html" accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title="INSERT" href="http://www.postgresql.org/docs/9.3/static/sql-insert.html" accesskey="N">Next</a></td>
+    </tr>
+  </tbody></table>
+  <hr class="c1" width="100%">
+</div>
+
+<h1><a name="SQL-GRANT" id="SQL-GRANT"></a>GRANT</h1>
+
+<div class="REFNAMEDIV">
+  <a name="AEN77778" id="AEN77778"></a>
+
+  <h2>Name</h2>GRANT&nbsp;--&nbsp;define access privileges
+</div>
+
+<div class="REFSYNOPSISDIV">
+  <a name="AEN77783" id="AEN77783"></a>
+
+  <h2>Synopsis</h2>
+  <pre class="SYNOPSIS">GRANT { { SELECT | INSERT | UPDATE | DELETE | TRUNCATE | REFERENCES | TRIGGER }
+    [, ...] | ALL [ PRIVILEGES ] }
+    ON { [ TABLE ] <tt class="REPLACEABLE c2">table_name</tt> [, ...]
+         | ALL TABLES IN SCHEMA <tt class="REPLACEABLE c2">schema_name</tt> [, ...] }
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { { SELECT | INSERT | UPDATE | REFERENCES } ( <tt class="REPLACEABLE c2">column_name</tt> [, ...] )
+    [, ...] | ALL [ PRIVILEGES ] ( <tt class="REPLACEABLE c2">column_name</tt> [, ...] ) }
+    ON [ TABLE ] <tt class="REPLACEABLE c2">table_name</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { { USAGE | SELECT | UPDATE }
+    [, ...] | ALL [ PRIVILEGES ] }
+    ON { SEQUENCE <tt class="REPLACEABLE c2">sequence_name</tt> [, ...]
+         | ALL SEQUENCES IN SCHEMA <tt class="REPLACEABLE c2">schema_name</tt> [, ...] }
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { { CREATE | CONNECT | TEMPORARY | TEMP } [, ...] | ALL [ PRIVILEGES ] }
+    ON DATABASE <tt class="REPLACEABLE c2">database_name</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { USAGE | ALL [ PRIVILEGES ] }
+    ON DOMAIN <tt class="REPLACEABLE c2">domain_name</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { USAGE | ALL [ PRIVILEGES ] }
+    ON FOREIGN DATA WRAPPER <tt class="REPLACEABLE c2">fdw_name</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { USAGE | ALL [ PRIVILEGES ] }
+    ON FOREIGN SERVER <tt class="REPLACEABLE c2">server_name</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { EXECUTE | ALL [ PRIVILEGES ] }
+    ON { FUNCTION <tt class="REPLACEABLE c2">function_name</tt> ( [ [ <tt class="REPLACEABLE c2">argmode</tt> ] [ <tt class="REPLACEABLE c2">arg_name</tt> ] <tt class="REPLACEABLE c2">arg_type</tt> [, ...] ] ) [, ...]
+         | ALL FUNCTIONS IN SCHEMA <tt class="REPLACEABLE c2">schema_name</tt> [, ...] }
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { USAGE | ALL [ PRIVILEGES ] }
+    ON LANGUAGE <tt class="REPLACEABLE c2">lang_name</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { { SELECT | UPDATE } [, ...] | ALL [ PRIVILEGES ] }
+    ON LARGE OBJECT <tt class="REPLACEABLE c2">loid</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { { CREATE | USAGE } [, ...] | ALL [ PRIVILEGES ] }
+    ON SCHEMA <tt class="REPLACEABLE c2">schema_name</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { CREATE | ALL [ PRIVILEGES ] }
+    ON TABLESPACE <tt class="REPLACEABLE c2">tablespace_name</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT { USAGE | ALL [ PRIVILEGES ] }
+    ON TYPE <tt class="REPLACEABLE c2">type_name</tt> [, ...]
+    TO { [ GROUP ] <tt class="REPLACEABLE c2">role_name</tt> | PUBLIC } [, ...] [ WITH GRANT OPTION ]
+
+GRANT <tt class="REPLACEABLE c2">role_name</tt> [, ...] TO <tt class="REPLACEABLE c2">role_name</tt> [, ...] [ WITH ADMIN OPTION ]
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="SQL-GRANT-DESCRIPTION" id="SQL-GRANT-DESCRIPTION"></a>
+
+  <h2>Description</h2>
+
+  <p>The <tt class="COMMAND">GRANT</tt> command has two basic
+  variants: one that grants privileges on a database object (table,
+  column, view, foreign table, sequence, database, foreign-data
+  wrapper, foreign server, function, procedural language, schema,
+  or tablespace), and one that grants membership in a role. These
+  variants are similar in many ways, but they are different enough
+  to be described separately.</p>
+
+  <div class="REFSECT2">
+    <a name="SQL-GRANT-DESCRIPTION-OBJECTS" id="SQL-GRANT-DESCRIPTION-OBJECTS"></a>
+
+    <h3>GRANT on Database Objects</h3>
+
+    <p>This variant of the <tt class="COMMAND">GRANT</tt> command
+    gives specific privileges on a database object to one or more
+    roles. These privileges are added to those already granted, if
+    any.</p>
+
+    <p>There is also an option to grant privileges on all objects
+    of the same type within one or more schemas. This functionality
+    is currently supported only for tables, sequences, and
+    functions (but note that <tt class="LITERAL">ALL TABLES</tt> is
+    considered to include views and foreign tables).</p>
+
+    <p>The key word <tt class="LITERAL">PUBLIC</tt> indicates that
+    the privileges are to be granted to all roles, including those
+    that might be created later. <tt class="LITERAL">PUBLIC</tt>
+    can be thought of as an implicitly defined group that always
+    includes all roles. Any particular role will have the sum of
+    privileges granted directly to it, privileges granted to any
+    role it is presently a member of, and privileges granted to
+    <tt class="LITERAL">PUBLIC</tt>.</p>
+
+    <p>If <tt class="LITERAL">WITH GRANT OPTION</tt> is specified,
+    the recipient of the privilege can in turn grant it to others.
+    Without a grant option, the recipient cannot do that. Grant
+    options cannot be granted to <tt class="LITERAL">PUBLIC</tt>.</p>
+
+    <p>There is no need to grant privileges to the owner of an
+    object (usually the user that created it), as the owner has all
+    privileges by default. (The owner could, however, choose to
+    revoke some of his own privileges for safety.)</p>
+
+    <p>The right to drop an object, or to alter its definition in
+    any way, is not treated as a grantable privilege; it is
+    inherent in the owner, and cannot be granted or revoked.
+    (However, a similar effect can be obtained by granting or
+    revoking membership in the role that owns the object; see
+    below.) The owner implicitly has all grant options for the
+    object, too.</p>
+
+    <p>PostgreSQL grants default privileges on some types of
+    objects to <tt class="LITERAL">PUBLIC</tt>. No privileges are
+    granted to <tt class="LITERAL">PUBLIC</tt> by default on
+    tables, columns, schemas or tablespaces. For other types, the
+    default privileges granted to <tt class="LITERAL">PUBLIC</tt>
+    are as follows: <tt class="LITERAL">CONNECT</tt> and <tt class="LITERAL">CREATE TEMP TABLE</tt> for databases; <tt class="LITERAL">EXECUTE</tt> privilege for functions; and <tt class="LITERAL">USAGE</tt> privilege for languages. The object owner
+    can, of course, <tt class="COMMAND">REVOKE</tt> both default
+    and expressly granted privileges. (For maximum security, issue
+    the <tt class="COMMAND">REVOKE</tt> in the same transaction
+    that creates the object; then there is no window in which
+    another user can use the object.) Also, these initial default
+    privilege settings can be changed using the <a href="http://www.postgresql.org/docs/9.3/static/sql-alterdefaultprivileges.html">ALTER DEFAULT PRIVILEGES</a>
+    command.</p>
+
+    <p>The possible privileges are:</p>
+
+    <div class="VARIABLELIST">
+      <dl>
+        <dt>SELECT</dt>
+
+        <dd>
+          <p>Allows <a href="http://www.postgresql.org/docs/9.3/static/sql-select.html">SELECT</a> from any
+          column, or the specific columns listed, of the specified
+          table, view, or sequence. Also allows the use of <a href="http://www.postgresql.org/docs/9.3/static/sql-copy.html">COPY</a> TO. This privilege is also
+          needed to reference existing column values in <a href="http://www.postgresql.org/docs/9.3/static/sql-update.html">UPDATE</a> or <a href="http://www.postgresql.org/docs/9.3/static/sql-delete.html">DELETE</a>. For sequences, this
+          privilege also allows the use of the <code class="FUNCTION">currval</code> function. For large objects,
+          this privilege allows the object to be read.</p>
+        </dd>
+
+        <dt>INSERT</dt>
+
+        <dd>
+          <p>Allows <a href="http://www.postgresql.org/docs/9.3/static/sql-insert.html">INSERT</a> of a new
+          row into the specified table. If specific columns are
+          listed, only those columns may be assigned to in the
+          <tt class="COMMAND">INSERT</tt> command (other columns
+          will therefore receive default values). Also allows
+          <a href="http://www.postgresql.org/docs/9.3/static/sql-copy.html">COPY</a> FROM.</p>
+        </dd>
+
+        <dt>UPDATE</dt>
+
+        <dd>
+          <p>Allows <a href="http://www.postgresql.org/docs/9.3/static/sql-update.html">UPDATE</a> of any
+          column, or the specific columns listed, of the specified
+          table. (In practice, any nontrivial <tt class="COMMAND">UPDATE</tt> command will require <tt class="LITERAL">SELECT</tt> privilege as well, since it must
+          reference table columns to determine which rows to
+          update, and/or to compute new values for columns.)
+          <tt class="LITERAL">SELECT ... FOR UPDATE</tt> and
+          <tt class="LITERAL">SELECT ... FOR SHARE</tt> also
+          require this privilege on at least one column, in
+          addition to the <tt class="LITERAL">SELECT</tt>
+          privilege. For sequences, this privilege allows the use
+          of the <code class="FUNCTION">nextval</code> and
+          <code class="FUNCTION">setval</code> functions. For large
+          objects, this privilege allows writing or truncating the
+          object.</p>
+        </dd>
+
+        <dt>DELETE</dt>
+
+        <dd>
+          <p>Allows <a href="http://www.postgresql.org/docs/9.3/static/sql-delete.html">DELETE</a> of a row
+          from the specified table. (In practice, any nontrivial
+          <tt class="COMMAND">DELETE</tt> command will require
+          <tt class="LITERAL">SELECT</tt> privilege as well, since
+          it must reference table columns to determine which rows
+          to delete.)</p>
+        </dd>
+
+        <dt>TRUNCATE</dt>
+
+        <dd>
+          <p>Allows <a href="http://www.postgresql.org/docs/9.3/static/sql-truncate.html">TRUNCATE</a> on the
+          specified table.</p>
+        </dd>
+
+        <dt>REFERENCES</dt>
+
+        <dd>
+          <p>To create a foreign key constraint, it is necessary to
+          have this privilege on both the referencing and
+          referenced columns. The privilege may be granted for all
+          columns of a table, or just specific columns.</p>
+        </dd>
+
+        <dt>TRIGGER</dt>
+
+        <dd>
+          <p>Allows the creation of a trigger on the specified
+          table. (See the <a href="http://www.postgresql.org/docs/9.3/static/sql-createtrigger.html">CREATE
+          TRIGGER</a> statement.)</p>
+        </dd>
+
+        <dt>CREATE</dt>
+
+        <dd>
+          <p>For databases, allows new schemas to be created within
+          the database.</p>
+
+          <p>For schemas, allows new objects to be created within
+          the schema. To rename an existing object, you must own
+          the object <span class="emphasis EMPHASIS c3">and</span>
+          have this privilege for the containing schema.</p>
+
+          <p>For tablespaces, allows tables, indexes, and temporary
+          files to be created within the tablespace, and allows
+          databases to be created that have the tablespace as their
+          default tablespace. (Note that revoking this privilege
+          will not alter the placement of existing objects.)</p>
+        </dd>
+
+        <dt>CONNECT</dt>
+
+        <dd>
+          <p>Allows the user to connect to the specified database.
+          This privilege is checked at connection startup (in
+          addition to checking any restrictions imposed by
+          <tt class="FILENAME">pg_hba.conf</tt>).</p>
+        </dd>
+
+        <dt>TEMPORARY<br>
+        TEMP</dt>
+
+        <dd>
+          <p>Allows temporary tables to be created while using the
+          specified database.</p>
+        </dd>
+
+        <dt>EXECUTE</dt>
+
+        <dd>
+          <p>Allows the use of the specified function and the use
+          of any operators that are implemented on top of the
+          function. This is the only type of privilege that is
+          applicable to functions. (This syntax works for aggregate
+          functions, as well.)</p>
+        </dd>
+
+        <dt>USAGE</dt>
+
+        <dd>
+          <p>For procedural languages, allows the use of the
+          specified language for the creation of functions in that
+          language. This is the only type of privilege that is
+          applicable to procedural languages.</p>
+
+          <p>For schemas, allows access to objects contained in the
+          specified schema (assuming that the objects' own
+          privilege requirements are also met). Essentially this
+          allows the grantee to <span class="QUOTE">"look
+          up"</span> objects within the schema. Without this
+          permission, it is still possible to see the object names,
+          e.g. by querying the system tables. Also, after revoking
+          this permission, existing backends might have statements
+          that have previously performed this lookup, so this is
+          not a completely secure way to prevent object access.</p>
+
+          <p>For sequences, this privilege allows the use of the
+          <code class="FUNCTION">currval</code> and <code class="FUNCTION">nextval</code> functions.</p>
+
+          <p>For types and domains, this privilege allow the use of
+          the type or domain in the creation of tables, functions,
+          and other schema objects. (Note that it does not control
+          general <span class="QUOTE">"usage"</span> of the type,
+          such as values of the type appearing in queries. It only
+          prevents objects from being created that depend on the
+          type. The main purpose of the privilege is controlling
+          which users create dependencies on a type, which could
+          prevent the owner from changing the type later.)</p>
+
+          <p>For foreign-data wrappers, this privilege enables the
+          grantee to create new servers using that foreign-data
+          wrapper.</p>
+
+          <p>For servers, this privilege enables the grantee to
+          create foreign tables using the server, and also to
+          create, alter, or drop his own user's user mappings
+          associated with that server.</p>
+        </dd>
+
+        <dt>ALL PRIVILEGES</dt>
+
+        <dd>
+          <p>Grant all of the available privileges at once. The
+          <tt class="LITERAL">PRIVILEGES</tt> key word is optional
+          in <span class="PRODUCTNAME">PostgreSQL</span>, though it
+          is required by strict SQL.</p>
+        </dd>
+      </dl>
+    </div>
+
+    <p>The privileges required by other commands are listed on the
+    reference page of the respective command.</p>
+  </div>
+
+  <div class="REFSECT2">
+    <a name="SQL-GRANT-DESCRIPTION-ROLES" id="SQL-GRANT-DESCRIPTION-ROLES"></a>
+
+    <h3>GRANT on Roles</h3>
+
+    <p>This variant of the <tt class="COMMAND">GRANT</tt> command
+    grants membership in a role to one or more other roles.
+    Membership in a role is significant because it conveys the
+    privileges granted to a role to each of its members.</p>
+
+    <p>If <tt class="LITERAL">WITH ADMIN OPTION</tt> is specified,
+    the member can in turn grant membership in the role to others,
+    and revoke membership in the role as well. Without the admin
+    option, ordinary users cannot do that. However, database
+    superusers can grant or revoke membership in any role to
+    anyone. Roles having <tt class="LITERAL">CREATEROLE</tt>
+    privilege can grant or revoke membership in any role that is
+    not a superuser.</p>
+
+    <p>Unlike the case with privileges, membership in a role cannot
+    be granted to <tt class="LITERAL">PUBLIC</tt>. Note also that
+    this form of the command does not allow the noise word
+    <tt class="LITERAL">GROUP</tt>.</p>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="SQL-GRANT-NOTES" id="SQL-GRANT-NOTES"></a>
+
+  <h2>Notes</h2>
+
+  <p>The <a href="http://www.postgresql.org/docs/9.3/static/sql-revoke.html">REVOKE</a> command is used to
+  revoke access privileges.</p>
+
+  <p>Since <span class="PRODUCTNAME">PostgreSQL</span> 8.1, the
+  concepts of users and groups have been unified into a single kind
+  of entity called a role. It is therefore no longer necessary to
+  use the keyword <tt class="LITERAL">GROUP</tt> to identify
+  whether a grantee is a user or a group. <tt class="LITERAL">GROUP</tt> is still allowed in the command, but it is a
+  noise word.</p>
+
+  <p>A user may perform <tt class="COMMAND">SELECT</tt>, <tt class="COMMAND">INSERT</tt>, etc. on a column if he holds that
+  privilege for either the specific column or its whole table.
+  Granting the privilege at the table level and then revoking it
+  for one column will not do what you might wish: the table-level
+  grant is unaffected by a column-level operation.</p>
+
+  <p>When a non-owner of an object attempts to <tt class="COMMAND">GRANT</tt> privileges on the object, the command will
+  fail outright if the user has no privileges whatsoever on the
+  object. As long as some privilege is available, the command will
+  proceed, but it will grant only those privileges for which the
+  user has grant options. The <tt class="COMMAND">GRANT ALL
+  PRIVILEGES</tt> forms will issue a warning message if no grant
+  options are held, while the other forms will issue a warning if
+  grant options for any of the privileges specifically named in the
+  command are not held. (In principle these statements apply to the
+  object owner as well, but since the owner is always treated as
+  holding all grant options, the cases can never occur.)</p>
+
+  <p>It should be noted that database superusers can access all
+  objects regardless of object privilege settings. This is
+  comparable to the rights of <tt class="LITERAL">root</tt> in a
+  Unix system. As with <tt class="LITERAL">root</tt>, it's unwise
+  to operate as a superuser except when absolutely necessary.</p>
+
+  <p>If a superuser chooses to issue a <tt class="COMMAND">GRANT</tt> or <tt class="COMMAND">REVOKE</tt> command,
+  the command is performed as though it were issued by the owner of
+  the affected object. In particular, privileges granted via such a
+  command will appear to have been granted by the object owner.
+  (For role membership, the membership appears to have been granted
+  by the containing role itself.)</p>
+
+  <p><tt class="COMMAND">GRANT</tt> and <tt class="COMMAND">REVOKE</tt> can also be done by a role that is not the
+  owner of the affected object, but is a member of the role that
+  owns the object, or is a member of a role that holds privileges
+  <tt class="LITERAL">WITH GRANT OPTION</tt> on the object. In this
+  case the privileges will be recorded as having been granted by
+  the role that actually owns the object or holds the privileges
+  <tt class="LITERAL">WITH GRANT OPTION</tt>. For example, if table
+  <tt class="LITERAL">t1</tt> is owned by role <tt class="LITERAL">g1</tt>, of which role <tt class="LITERAL">u1</tt> is a
+  member, then <tt class="LITERAL">u1</tt> can grant privileges on
+  <tt class="LITERAL">t1</tt> to <tt class="LITERAL">u2</tt>, but
+  those privileges will appear to have been granted directly by
+  <tt class="LITERAL">g1</tt>. Any other member of role <tt class="LITERAL">g1</tt> could revoke them later.</p>
+
+  <p>If the role executing <tt class="COMMAND">GRANT</tt> holds the
+  required privileges indirectly via more than one role membership
+  path, it is unspecified which containing role will be recorded as
+  having done the grant. In such cases it is best practice to use
+  <tt class="COMMAND">SET ROLE</tt> to become the specific role you
+  want to do the <tt class="COMMAND">GRANT</tt> as.</p>
+
+  <p>Granting permission on a table does not automatically extend
+  permissions to any sequences used by the table, including
+  sequences tied to <tt class="TYPE">SERIAL</tt> columns.
+  Permissions on sequences must be set separately.</p>
+
+  <p>Use <a href="http://www.postgresql.org/docs/9.3/static/app-psql.html"><span class="APPLICATION">psql</span></a>'s <tt class="COMMAND">\dp</tt>
+  command to obtain information about existing privileges for
+  tables and columns. For example:</p>
+  <pre class="PROGRAMLISTING">=&gt; \dp mytable
+                              Access privileges
+ Schema |  Name   | Type  |   Access privileges   | Column access privileges 
+--------+---------+-------+-----------------------+--------------------------
+ public | mytable | table | miriam=arwdDxt/miriam | col1:
+                          : =r/miriam             :   miriam_rw=rw/miriam
+                          : admin=arw/miriam        
+(1 row)
+</pre>
+
+  <p>The entries shown by <tt class="COMMAND">\dp</tt> are
+  interpreted thus:</p>
+  <pre class="LITERALLAYOUT">rolename=xxxx -- privileges granted to a role
+        =xxxx -- privileges granted to PUBLIC
+
+            r -- SELECT ("read")
+            w -- UPDATE ("write")
+            a -- INSERT ("append")
+            d -- DELETE
+            D -- TRUNCATE
+            x -- REFERENCES
+            t -- TRIGGER
+            X -- EXECUTE
+            U -- USAGE
+            C -- CREATE
+            c -- CONNECT
+            T -- TEMPORARY
+      arwdDxt -- ALL PRIVILEGES (for tables, varies for other objects)
+            * -- grant option for preceding privilege
+
+        /yyyy -- role that granted this privilege
+</pre>
+
+  <p>The above example display would be seen by user <tt class="LITERAL">miriam</tt> after creating table <tt class="LITERAL">mytable</tt> and doing:</p>
+  <pre class="PROGRAMLISTING">GRANT SELECT ON mytable TO PUBLIC;
+GRANT SELECT, UPDATE, INSERT ON mytable TO admin;
+GRANT SELECT (col1), UPDATE (col1) ON mytable TO miriam_rw;
+</pre>
+
+  <p>For non-table objects there are other <tt class="COMMAND">\d</tt> commands that can display their privileges.</p>
+
+  <p>If the <span class="QUOTE">"Access privileges"</span> column
+  is empty for a given object, it means the object has default
+  privileges (that is, its privileges column is null). Default
+  privileges always include all privileges for the owner, and can
+  include some privileges for <tt class="LITERAL">PUBLIC</tt>
+  depending on the object type, as explained above. The first
+  <tt class="COMMAND">GRANT</tt> or <tt class="COMMAND">REVOKE</tt>
+  on an object will instantiate the default privileges (producing,
+  for example, <tt class="LITERAL">{miriam=arwdDxt/miriam}</tt>)
+  and then modify them per the specified request. Similarly,
+  entries are shown in <span class="QUOTE">"Column access
+  privileges"</span> only for columns with nondefault privileges.
+  (Note: for this purpose, <span class="QUOTE">"default
+  privileges"</span> always means the built-in default privileges
+  for the object's type. An object whose privileges have been
+  affected by an <tt class="COMMAND">ALTER DEFAULT PRIVILEGES</tt>
+  command will always be shown with an explicit privilege entry
+  that includes the effects of the <tt class="COMMAND">ALTER</tt>.)</p>
+
+  <p>Notice that the owner's implicit grant options are not marked
+  in the access privileges display. A <tt class="LITERAL">*</tt>
+  will appear only when grant options have been explicitly granted
+  to someone.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="SQL-GRANT-EXAMPLES" id="SQL-GRANT-EXAMPLES"></a>
+
+  <h2>Examples</h2>
+
+  <p>Grant insert privilege to all users on table <tt class="LITERAL">films</tt>:</p>
+  <pre class="PROGRAMLISTING">GRANT INSERT ON films TO PUBLIC;
+</pre>
+
+  <p>Grant all available privileges to user <tt class="LITERAL">manuel</tt> on view <tt class="LITERAL">kinds</tt>:</p>
+  <pre class="PROGRAMLISTING">GRANT ALL PRIVILEGES ON kinds TO manuel;
+</pre>
+
+  <p>Note that while the above will indeed grant all privileges if
+  executed by a superuser or the owner of <tt class="LITERAL">kinds</tt>, when executed by someone else it will only
+  grant those permissions for which the someone else has grant
+  options.</p>
+
+  <p>Grant membership in role <tt class="LITERAL">admins</tt> to
+  user <tt class="LITERAL">joe</tt>:</p>
+  <pre class="PROGRAMLISTING">GRANT admins TO joe;
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="SQL-GRANT-COMPATIBILITY" id="SQL-GRANT-COMPATIBILITY"></a>
+
+  <h2>Compatibility</h2>
+
+  <p>According to the SQL standard, the <tt class="LITERAL">PRIVILEGES</tt> key word in <tt class="LITERAL">ALL
+  PRIVILEGES</tt> is required. The SQL standard does not support
+  setting the privileges on more than one object per command.</p>
+
+  <p><span class="PRODUCTNAME">PostgreSQL</span> allows an object
+  owner to revoke his own ordinary privileges: for example, a table
+  owner can make the table read-only to himself by revoking his own
+  <tt class="LITERAL">INSERT</tt>, <tt class="LITERAL">UPDATE</tt>,
+  <tt class="LITERAL">DELETE</tt>, and <tt class="LITERAL">TRUNCATE</tt> privileges. This is not possible
+  according to the SQL standard. The reason is that <span class="PRODUCTNAME">PostgreSQL</span> treats the owner's privileges as
+  having been granted by the owner to himself; therefore he can
+  revoke them too. In the SQL standard, the owner's privileges are
+  granted by an assumed entity <span class="QUOTE">"_SYSTEM"</span>. Not being <span class="QUOTE">"_SYSTEM"</span>, the owner cannot revoke these
+  rights.</p>
+
+  <p>According to the SQL standard, grant options can be granted to
+  <tt class="LITERAL">PUBLIC</tt>; PostgreSQL only supports
+  granting grant options to roles.</p>
+
+  <p>The SQL standard provides for a <tt class="LITERAL">USAGE</tt>
+  privilege on other kinds of objects: character sets, collations,
+  translations.</p>
+
+  <p>In the SQL standard, sequences only have a <tt class="LITERAL">USAGE</tt> privilege, which controls the use of the
+  <tt class="LITERAL">NEXT VALUE FOR</tt> expression, which is
+  equivalent to the function <code class="FUNCTION">nextval</code>
+  in PostgreSQL. The sequence privileges <tt class="LITERAL">SELECT</tt> and <tt class="LITERAL">UPDATE</tt> are
+  PostgreSQL extensions. The application of the sequence <tt class="LITERAL">USAGE</tt> privilege to the <tt class="LITERAL">currval</tt> function is also a PostgreSQL extension
+  (as is the function itself).</p>
+
+  <p>Privileges on databases, tablespaces, schemas, and languages
+  are <span class="PRODUCTNAME">PostgreSQL</span> extensions.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78056" id="AEN78056"></a>
+
+  <h2>See Also</h2><a href="http://www.postgresql.org/docs/9.3/static/sql-revoke.html">REVOKE</a>, <a href="http://www.postgresql.org/docs/9.3/static/sql-alterdefaultprivileges.html">ALTER DEFAULT PRIVILEGES</a>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%">
+
+  <table summary="Footer navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td width="33%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-fetch.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-insert.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">FETCH</td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">INSERT</td>
+    </tr>
+  </tbody></table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br>
+Copyright © 1996-2013 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+
+
+</body></html>

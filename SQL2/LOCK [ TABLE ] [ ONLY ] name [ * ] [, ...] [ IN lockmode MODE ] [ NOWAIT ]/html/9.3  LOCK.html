@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0055)http://www.postgresql.org/docs/9.3/static/sql-lock.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PostgreSQL: Documentation: 9.3: LOCK</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("/media/css/docs.css");</style>
+    <link rel="alternate stylesheet" media="screen" href="./9.3  LOCK_files/docs_large.css" type="text/css" title="Large Text" disabled="">
+    <script type="text/javascript" async="" src="./9.3  LOCK_files/ga.js"></script><script type="text/javascript" src="./9.3  LOCK_files/styleswitcher.js"></script>
+    <script type="text/javascript" src="./9.3  LOCK_files/monospacefix.js"></script></head><body><pre id="monotest" style="display: none;">&nbsp;</pre><p id="paratest" style="display: none;">&nbsp;</p><style type="text/css" media="screen">#docContainer tt, #docContainer pre, #docContainer code{font-size: 1.2em;}</style>
+
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="./9.3  LOCK_files/hdr_logo.png" width="206" height="80" alt="PostgreSQL"></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.3/">
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value=&#39;&#39;;" value="Search"><input id="submit" type="submit" value="Search">
+	</div>
+	</form>
+        <div id="docTextSize">Text Size: <a href="http://www.postgresql.org/docs/9.3/static/sql-lock.html#" onclick="setActiveStyleSheet(&#39;Normal Text&#39;); return false;" onkeypress="return false;" title="Normal Text Size">Normal</a> / <a href="http://www.postgresql.org/docs/9.3/static/sql-lock.html#" onclick="setActiveStyleSheet(&#39;Large Text&#39;); return false;" onkeypress="return false;" title="Large Text Size">Large</a></div>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> → <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> → <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> → <a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3</a>
+</div>
+<div id="docVersions">
+
+This page in other versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/9.2/static/sql-lock.html" title="This page in version 9.2">9.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.1/static/sql-lock.html" title="This page in version 9.1">9.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.0/static/sql-lock.html" title="This page in version 9.0">9.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.4/static/sql-lock.html" title="This page in version 8.4">8.4</a>
+	
+
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<b>9.3</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.3/static/sql-lock.html" title="This page in version 8.3" rel="nofollow">8.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.2/static/sql-lock.html" title="This page in version 8.2" rel="nofollow">8.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.1/static/sql-lock.html" title="This page in version 8.1" rel="nofollow">8.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.0/static/sql-lock.html" title="This page in version 8.0" rel="nofollow">8.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.4/static/sql-lock.html" title="This page in version 7.4" rel="nofollow">7.4</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.3/static/sql-lock.html" title="This page in version 7.3" rel="nofollow">7.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.2/static/sql-lock.html" title="This page in version 7.2" rel="nofollow">7.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.1/static/sql-lock.html" title="This page in version 7.1" rel="nofollow">7.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/devel/static/sql-lock.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="5" align="center" valign="bottom"><a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3beta2 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title="LOAD" href="http://www.postgresql.org/docs/9.3/static/sql-load.html" accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title="MOVE" href="http://www.postgresql.org/docs/9.3/static/sql-move.html" accesskey="N">Next</a></td>
+    </tr>
+  </tbody></table>
+  <hr class="c1" width="100%">
+</div>
+
+<h1><a name="SQL-LOCK" id="SQL-LOCK"></a>LOCK</h1>
+
+<div class="REFNAMEDIV">
+  <a name="AEN78343" id="AEN78343"></a>
+
+  <h2>Name</h2>LOCK&nbsp;--&nbsp;lock a table
+</div>
+
+<div class="REFSYNOPSISDIV">
+  <a name="AEN78348" id="AEN78348"></a>
+
+  <h2>Synopsis</h2>
+  <pre class="SYNOPSIS">LOCK [ TABLE ] [ ONLY ] <tt class="REPLACEABLE c2">name</tt> [ * ] [, ...] [ IN <tt class="REPLACEABLE c2">lockmode</tt> MODE ] [ NOWAIT ]
+
+<span class="phrase PHRASE">where <tt class="REPLACEABLE c2">lockmode</tt> is one of:</span>
+
+    ACCESS SHARE | ROW SHARE | ROW EXCLUSIVE | SHARE UPDATE EXCLUSIVE
+    | SHARE | SHARE ROW EXCLUSIVE | EXCLUSIVE | ACCESS EXCLUSIVE
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78354" id="AEN78354"></a>
+
+  <h2>Description</h2>
+
+  <p><tt class="COMMAND">LOCK TABLE</tt> obtains a table-level
+  lock, waiting if necessary for any conflicting locks to be
+  released. If <tt class="LITERAL">NOWAIT</tt> is specified,
+  <tt class="COMMAND">LOCK TABLE</tt> does not wait to acquire the
+  desired lock: if it cannot be acquired immediately, the command
+  is aborted and an error is emitted. Once obtained, the lock is
+  held for the remainder of the current transaction. (There is no
+  <tt class="COMMAND">UNLOCK TABLE</tt> command; locks are always
+  released at transaction end.)</p>
+
+  <p>When acquiring locks automatically for commands that reference
+  tables, <span class="PRODUCTNAME">PostgreSQL</span> always uses
+  the least restrictive lock mode possible. <tt class="COMMAND">LOCK TABLE</tt> provides for cases when you might need
+  more restrictive locking. For example, suppose an application
+  runs a transaction at the Read Committed isolation level and
+  needs to ensure that data in a table remains stable for the
+  duration of the transaction. To achieve this you could obtain
+  <tt class="LITERAL">SHARE</tt> lock mode over the table before
+  querying. This will prevent concurrent data changes and ensure
+  subsequent reads of the table see a stable view of committed
+  data, because <tt class="LITERAL">SHARE</tt> lock mode conflicts
+  with the <tt class="LITERAL">ROW EXCLUSIVE</tt> lock acquired by
+  writers, and your <tt class="COMMAND">LOCK TABLE <tt class="REPLACEABLE c2">name</tt> IN SHARE MODE</tt> statement will wait
+  until any concurrent holders of <tt class="LITERAL">ROW
+  EXCLUSIVE</tt> mode locks commit or roll back. Thus, once you
+  obtain the lock, there are no uncommitted writes outstanding;
+  furthermore none can begin until you release the lock.</p>
+
+  <p>To achieve a similar effect when running a transaction at the
+  <tt class="LITERAL">REPEATABLE READ</tt> or <tt class="LITERAL">SERIALIZABLE</tt> isolation level, you have to execute
+  the <tt class="COMMAND">LOCK TABLE</tt> statement before
+  executing any <tt class="COMMAND">SELECT</tt> or data
+  modification statement. A <tt class="LITERAL">REPEATABLE
+  READ</tt> or <tt class="LITERAL">SERIALIZABLE</tt> transaction's
+  view of data will be frozen when its first <tt class="COMMAND">SELECT</tt> or data modification statement begins. A
+  <tt class="COMMAND">LOCK TABLE</tt> later in the transaction will
+  still prevent concurrent writes — but it won't ensure that what
+  the transaction reads corresponds to the latest committed
+  values.</p>
+
+  <p>If a transaction of this sort is going to change the data in
+  the table, then it should use <tt class="LITERAL">SHARE ROW
+  EXCLUSIVE</tt> lock mode instead of <tt class="LITERAL">SHARE</tt> mode. This ensures that only one transaction
+  of this type runs at a time. Without this, a deadlock is
+  possible: two transactions might both acquire <tt class="LITERAL">SHARE</tt> mode, and then be unable to also acquire
+  <tt class="LITERAL">ROW EXCLUSIVE</tt> mode to actually perform
+  their updates. (Note that a transaction's own locks never
+  conflict, so a transaction can acquire <tt class="LITERAL">ROW
+  EXCLUSIVE</tt> mode when it holds <tt class="LITERAL">SHARE</tt>
+  mode — but not if anyone else holds <tt class="LITERAL">SHARE</tt> mode.) To avoid deadlocks, make sure all
+  transactions acquire locks on the same objects in the same order,
+  and if multiple lock modes are involved for a single object, then
+  transactions should always acquire the most restrictive mode
+  first.</p>
+
+  <p>More information about the lock modes and locking strategies
+  can be found in <a href="http://www.postgresql.org/docs/9.3/static/explicit-locking.html">Section
+  13.3</a>.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78389" id="AEN78389"></a>
+
+  <h2>Parameters</h2>
+
+  <div class="VARIABLELIST">
+    <dl>
+      <dt><tt class="REPLACEABLE c2">name</tt></dt>
+
+      <dd>
+        <p>The name (optionally schema-qualified) of an existing
+        table to lock. If <tt class="LITERAL">ONLY</tt> is
+        specified before the table name, only that table is locked.
+        If <tt class="LITERAL">ONLY</tt> is not specified, the
+        table and all its descendant tables (if any) are locked.
+        Optionally, <tt class="LITERAL">*</tt> can be specified
+        after the table name to explicitly indicate that descendant
+        tables are included.</p>
+
+        <p>The command <tt class="LITERAL">LOCK TABLE a, b;</tt> is
+        equivalent to <tt class="LITERAL">LOCK TABLE a; LOCK TABLE
+        b;</tt>. The tables are locked one-by-one in the order
+        specified in the <tt class="COMMAND">LOCK TABLE</tt>
+        command.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">lockmode</tt></dt>
+
+      <dd>
+        <p>The lock mode specifies which locks this lock conflicts
+        with. Lock modes are described in <a href="http://www.postgresql.org/docs/9.3/static/explicit-locking.html">Section 13.3</a>.</p>
+
+        <p>If no lock mode is specified, then <tt class="LITERAL">ACCESS EXCLUSIVE</tt>, the most restrictive mode,
+        is used.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">NOWAIT</tt></dt>
+
+      <dd>
+        <p>Specifies that <tt class="COMMAND">LOCK TABLE</tt>
+        should not wait for any conflicting locks to be released:
+        if the specified lock(s) cannot be acquired immediately
+        without waiting, the transaction is aborted.</p>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78418" id="AEN78418"></a>
+
+  <h2>Notes</h2>
+
+  <p><tt class="LITERAL">LOCK TABLE ... IN ACCESS SHARE MODE</tt>
+  requires <tt class="LITERAL">SELECT</tt> privileges on the target
+  table. All other forms of <tt class="COMMAND">LOCK</tt> require
+  table-level <tt class="LITERAL">UPDATE</tt>, <tt class="LITERAL">DELETE</tt>, or <tt class="LITERAL">TRUNCATE</tt>
+  privileges.</p>
+
+  <p><tt class="COMMAND">LOCK TABLE</tt> is useless outside a
+  transaction block: the lock would remain held only to the
+  completion of the statement. Therefore <span class="PRODUCTNAME">PostgreSQL</span> reports an error if <tt class="COMMAND">LOCK</tt> is used outside a transaction block. Use
+  <a href="http://www.postgresql.org/docs/9.3/static/sql-begin.html">BEGIN</a> and <a href="http://www.postgresql.org/docs/9.3/static/sql-commit.html">COMMIT</a> (or <a href="http://www.postgresql.org/docs/9.3/static/sql-rollback.html">ROLLBACK</a>) to define a transaction
+  block.</p>
+
+  <p><tt class="COMMAND">LOCK TABLE</tt> only deals with
+  table-level locks, and so the mode names involving <tt class="LITERAL">ROW</tt> are all misnomers. These mode names should
+  generally be read as indicating the intention of the user to
+  acquire row-level locks within the locked table. Also, <tt class="LITERAL">ROW EXCLUSIVE</tt> mode is a shareable table lock. Keep
+  in mind that all the lock modes have identical semantics so far
+  as <tt class="COMMAND">LOCK TABLE</tt> is concerned, differing
+  only in the rules about which modes conflict with which. For
+  information on how to acquire an actual row-level lock, see
+  <a href="http://www.postgresql.org/docs/9.3/static/explicit-locking.html#LOCKING-ROWS">Section 13.3.2</a>
+  and the <a class="c3" href="http://www.postgresql.org/docs/9.3/static/sql-select.html#SQL-FOR-UPDATE-SHARE">The Locking Clause</a> in
+  the <tt class="COMMAND">SELECT</tt> reference documentation.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78442" id="AEN78442"></a>
+
+  <h2>Examples</h2>
+
+  <p>Obtain a <tt class="LITERAL">SHARE</tt> lock on a primary key
+  table when going to perform inserts into a foreign key table:</p>
+  <pre class="PROGRAMLISTING">BEGIN WORK;
+LOCK TABLE films IN SHARE MODE;
+SELECT id FROM films
+    WHERE name = 'Star Wars: Episode I - The Phantom Menace';
+-- Do ROLLBACK if record was not returned
+INSERT INTO films_user_comments VALUES
+    (_id_, 'GREAT! I was waiting for it for so long!');
+COMMIT WORK;
+</pre>
+
+  <p>Take a <tt class="LITERAL">SHARE ROW EXCLUSIVE</tt> lock on a
+  primary key table when going to perform a delete operation:</p>
+  <pre class="PROGRAMLISTING">BEGIN WORK;
+LOCK TABLE films IN SHARE ROW EXCLUSIVE MODE;
+DELETE FROM films_user_comments WHERE id IN
+    (SELECT id FROM films WHERE rating &lt; 5);
+DELETE FROM films WHERE rating &lt; 5;
+COMMIT WORK;
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78450" id="AEN78450"></a>
+
+  <h2>Compatibility</h2>
+
+  <p>There is no <tt class="COMMAND">LOCK TABLE</tt> in the SQL
+  standard, which instead uses <tt class="COMMAND">SET
+  TRANSACTION</tt> to specify concurrency levels on transactions.
+  <span class="PRODUCTNAME">PostgreSQL</span> supports that too;
+  see <a href="http://www.postgresql.org/docs/9.3/static/sql-set-transaction.html">SET TRANSACTION</a> for
+  details.</p>
+
+  <p>Except for <tt class="LITERAL">ACCESS SHARE</tt>, <tt class="LITERAL">ACCESS EXCLUSIVE</tt>, and <tt class="LITERAL">SHARE
+  UPDATE EXCLUSIVE</tt> lock modes, the <span class="PRODUCTNAME">PostgreSQL</span> lock modes and the <tt class="COMMAND">LOCK TABLE</tt> syntax are compatible with those
+  present in <span class="PRODUCTNAME">Oracle</span>.</p>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%">
+
+  <table summary="Footer navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td width="33%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-load.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-move.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">LOAD</td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">MOVE</td>
+    </tr>
+  </tbody></table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br>
+Copyright © 1996-2013 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+
+
+</body></html>

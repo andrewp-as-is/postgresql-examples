@@ -1,0 +1,15 @@
+CREATE SCHEMA UPPERCASE;
+
+SELECT * 
+FROM pg_namespace 
+WHERE nspname='uppercase';
+
+DROP SCHEMA UPPERCASE;
+
+CREATE SCHEMA "UPPERCASE";
+
+SELECT * 
+FROM pg_namespace 
+WHERE nspname='UPPERCASE';
+
+DROP SCHEMA "UPPERCASE";

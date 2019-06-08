@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0058)http://www.postgresql.org/docs/9.3/static/sql-reindex.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PostgreSQL: Documentation: 9.3: REINDEX</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("/media/css/docs.css");</style>
+    <link rel="alternate stylesheet" media="screen" href="./9.3  REINDEX_files/docs_large.css" type="text/css" title="Large Text" disabled="">
+    <script type="text/javascript" async="" src="./9.3  REINDEX_files/ga.js"></script><script type="text/javascript" src="./9.3  REINDEX_files/styleswitcher.js"></script>
+    <script type="text/javascript" src="./9.3  REINDEX_files/monospacefix.js"></script></head><body><pre id="monotest" style="display: none;">&nbsp;</pre><p id="paratest" style="display: none;">&nbsp;</p><style type="text/css" media="screen">#docContainer tt, #docContainer pre, #docContainer code{font-size: 1.2em;}</style>
+
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="./9.3  REINDEX_files/hdr_logo.png" width="206" height="80" alt="PostgreSQL"></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.3/">
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value=&#39;&#39;;" value="Search"><input id="submit" type="submit" value="Search">
+	</div>
+	</form>
+        <div id="docTextSize">Text Size: <a href="http://www.postgresql.org/docs/9.3/static/sql-reindex.html#" onclick="setActiveStyleSheet(&#39;Normal Text&#39;); return false;" onkeypress="return false;" title="Normal Text Size">Normal</a> / <a href="http://www.postgresql.org/docs/9.3/static/sql-reindex.html#" onclick="setActiveStyleSheet(&#39;Large Text&#39;); return false;" onkeypress="return false;" title="Large Text Size">Large</a></div>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> → <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> → <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> → <a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3</a>
+</div>
+<div id="docVersions">
+
+This page in other versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/9.2/static/sql-reindex.html" title="This page in version 9.2">9.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.1/static/sql-reindex.html" title="This page in version 9.1">9.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.0/static/sql-reindex.html" title="This page in version 9.0">9.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.4/static/sql-reindex.html" title="This page in version 8.4">8.4</a>
+	
+
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<b>9.3</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.3/static/sql-reindex.html" title="This page in version 8.3" rel="nofollow">8.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.2/static/sql-reindex.html" title="This page in version 8.2" rel="nofollow">8.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.1/static/sql-reindex.html" title="This page in version 8.1" rel="nofollow">8.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.0/static/sql-reindex.html" title="This page in version 8.0" rel="nofollow">8.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.4/static/sql-reindex.html" title="This page in version 7.4" rel="nofollow">7.4</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.3/static/sql-reindex.html" title="This page in version 7.3" rel="nofollow">7.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.2/static/sql-reindex.html" title="This page in version 7.2" rel="nofollow">7.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.1/static/sql-reindex.html" title="This page in version 7.1" rel="nofollow">7.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/devel/static/sql-reindex.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="5" align="center" valign="bottom"><a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3beta2 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title="REFRESH MATERIALIZED VIEW" href="http://www.postgresql.org/docs/9.3/static/sql-refreshmaterializedview.html" accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title="RELEASE SAVEPOINT" href="http://www.postgresql.org/docs/9.3/static/sql-release-savepoint.html" accesskey="N">Next</a></td>
+    </tr>
+  </tbody></table>
+  <hr class="c1" width="100%">
+</div>
+
+<h1><a name="SQL-REINDEX" id="SQL-REINDEX"></a>REINDEX</h1>
+
+<div class="REFNAMEDIV">
+  <a name="AEN78917" id="AEN78917"></a>
+
+  <h2>Name</h2>REINDEX&nbsp;--&nbsp;rebuild indexes
+</div>
+
+<div class="REFSYNOPSISDIV">
+  <a name="AEN78922" id="AEN78922"></a>
+
+  <h2>Synopsis</h2>
+  <pre class="SYNOPSIS">REINDEX { INDEX | TABLE | DATABASE | SYSTEM } <tt class="REPLACEABLE c2">name</tt> [ FORCE ]
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78925" id="AEN78925"></a>
+
+  <h2>Description</h2>
+
+  <p><tt class="COMMAND">REINDEX</tt> rebuilds an index using the
+  data stored in the index's table, replacing the old copy of the
+  index. There are several scenarios in which to use <tt class="COMMAND">REINDEX</tt>:</p>
+
+  <ul>
+    <li>
+      <p>An index has become corrupted, and no longer contains
+      valid data. Although in theory this should never happen, in
+      practice indexes can become corrupted due to software bugs or
+      hardware failures. <tt class="COMMAND">REINDEX</tt> provides
+      a recovery method.</p>
+    </li>
+
+    <li>
+      <p>An index has become <span class="QUOTE">"bloated"</span>,
+      that it is contains many empty or nearly-empty pages. This
+      can occur with B-tree indexes in <span class="PRODUCTNAME">PostgreSQL</span> under certain uncommon access
+      patterns. <tt class="COMMAND">REINDEX</tt> provides a way to
+      reduce the space consumption of the index by writing a new
+      version of the index without the dead pages. See <a href="http://www.postgresql.org/docs/9.3/static/routine-reindex.html">Section 23.2</a> for more
+      information.</p>
+    </li>
+
+    <li>
+      <p>You have altered a storage parameter (such as fillfactor)
+      for an index, and wish to ensure that the change has taken
+      full effect.</p>
+    </li>
+
+    <li>
+      <p>An index build with the <tt class="LITERAL">CONCURRENTLY</tt> option failed, leaving an
+      <span class="QUOTE">"invalid"</span> index. Such indexes are
+      useless but it can be convenient to use <tt class="COMMAND">REINDEX</tt> to rebuild them. Note that <tt class="COMMAND">REINDEX</tt> will not perform a concurrent build.
+      To build the index without interfering with production you
+      should drop the index and reissue the <tt class="COMMAND">CREATE INDEX CONCURRENTLY</tt> command.</p>
+    </li>
+  </ul>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78949" id="AEN78949"></a>
+
+  <h2>Parameters</h2>
+
+  <div class="VARIABLELIST">
+    <dl>
+      <dt><tt class="LITERAL">INDEX</tt></dt>
+
+      <dd>
+        <p>Recreate the specified index.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">TABLE</tt></dt>
+
+      <dd>
+        <p>Recreate all indexes of the specified table. If the
+        table has a secondary <span class="QUOTE">"TOAST"</span>
+        table, that is reindexed as well.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">DATABASE</tt></dt>
+
+      <dd>
+        <p>Recreate all indexes within the current database.
+        Indexes on shared system catalogs are also processed. This
+        form of <tt class="COMMAND">REINDEX</tt> cannot be executed
+        inside a transaction block.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">SYSTEM</tt></dt>
+
+      <dd>
+        <p>Recreate all indexes on system catalogs within the
+        current database. Indexes on shared system catalogs are
+        included. Indexes on user tables are not processed. This
+        form of <tt class="COMMAND">REINDEX</tt> cannot be executed
+        inside a transaction block.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">name</tt></dt>
+
+      <dd>
+        <p>The name of the specific index, table, or database to be
+        reindexed. Index and table names can be schema-qualified.
+        Presently, <tt class="COMMAND">REINDEX DATABASE</tt> and
+        <tt class="COMMAND">REINDEX SYSTEM</tt> can only reindex
+        the current database, so their parameter must match the
+        current database's name.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">FORCE</tt></dt>
+
+      <dd>
+        <p>This is an obsolete option; it is ignored if
+        specified.</p>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78987" id="AEN78987"></a>
+
+  <h2>Notes</h2>
+
+  <p>If you suspect corruption of an index on a user table, you can
+  simply rebuild that index, or all indexes on the table, using
+  <tt class="COMMAND">REINDEX INDEX</tt> or <tt class="COMMAND">REINDEX TABLE</tt>.</p>
+
+  <p>Things are more difficult if you need to recover from
+  corruption of an index on a system table. In this case it's
+  important for the system to not have used any of the suspect
+  indexes itself. (Indeed, in this sort of scenario you might find
+  that server processes are crashing immediately at start-up, due
+  to reliance on the corrupted indexes.) To recover safely, the
+  server must be started with the <tt class="OPTION">-P</tt>
+  option, which prevents it from using indexes for system catalog
+  lookups.</p>
+
+  <p>One way to do this is to shut down the server and start a
+  single-user <span class="PRODUCTNAME">PostgreSQL</span> server
+  with the <tt class="OPTION">-P</tt> option included on its
+  command line. Then, <tt class="COMMAND">REINDEX DATABASE</tt>,
+  <tt class="COMMAND">REINDEX SYSTEM</tt>, <tt class="COMMAND">REINDEX TABLE</tt>, or <tt class="COMMAND">REINDEX
+  INDEX</tt> can be issued, depending on how much you want to
+  reconstruct. If in doubt, use <tt class="COMMAND">REINDEX
+  SYSTEM</tt> to select reconstruction of all system indexes in the
+  database. Then quit the single-user server session and restart
+  the regular server. See the <a href="http://www.postgresql.org/docs/9.3/static/app-postgres.html"><span class="APPLICATION">postgres</span></a>
+  reference page for more information about how to interact with
+  the single-user server interface.</p>
+
+  <p>Alternatively, a regular server session can be started with
+  <tt class="OPTION">-P</tt> included in its command line options.
+  The method for doing this varies across clients, but in all
+  <span class="APPLICATION">libpq</span>-based clients, it is
+  possible to set the <tt class="ENVAR">PGOPTIONS</tt> environment
+  variable to <tt class="LITERAL">-P</tt> before starting the
+  client. Note that while this method does not require locking out
+  other clients, it might still be wise to prevent other users from
+  connecting to the damaged database until repairs have been
+  completed.</p>
+
+  <p><tt class="COMMAND">REINDEX</tt> is similar to a drop and
+  recreate of the index in that the index contents are rebuilt from
+  scratch. However, the locking considerations are rather
+  different. <tt class="COMMAND">REINDEX</tt> locks out writes but
+  not reads of the index's parent table. It also takes an exclusive
+  lock on the specific index being processed, which will block
+  reads that attempt to use that index. In contrast, <tt class="COMMAND">DROP INDEX</tt> momentarily takes exclusive lock on the
+  parent table, blocking both writes and reads. The subsequent
+  <tt class="COMMAND">CREATE INDEX</tt> locks out writes but not
+  reads; since the index is not there, no read will attempt to use
+  it, meaning that there will be no blocking but reads might be
+  forced into expensive sequential scans.</p>
+
+  <p>Reindexing a single index or table requires being the owner of
+  that index or table. Reindexing a database requires being the
+  owner of the database (note that the owner can therefore rebuild
+  indexes of tables owned by other users). Of course, superusers
+  can always reindex anything.</p>
+
+  <p>Prior to <span class="PRODUCTNAME">PostgreSQL</span> 8.1,
+  <tt class="COMMAND">REINDEX DATABASE</tt> processed only system
+  indexes, not all indexes as one would expect from the name. This
+  has been changed to reduce the surprise factor. The old behavior
+  is available as <tt class="COMMAND">REINDEX SYSTEM</tt>.</p>
+
+  <p>Prior to <span class="PRODUCTNAME">PostgreSQL</span> 7.4,
+  <tt class="COMMAND">REINDEX TABLE</tt> did not automatically
+  process TOAST tables, and so those had to be reindexed by
+  separate commands. This is still possible, but redundant.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN79021" id="AEN79021"></a>
+
+  <h2>Examples</h2>
+
+  <p>Rebuild a single index:</p>
+  <pre class="PROGRAMLISTING">REINDEX INDEX my_index;
+</pre>
+
+  <p>Rebuild all the indexes on the table <tt class="LITERAL">my_table</tt>:</p>
+  <pre class="PROGRAMLISTING">REINDEX TABLE my_table;
+</pre>
+
+  <p>Rebuild all indexes in a particular database, without trusting
+  the system indexes to be valid already:</p>
+  <pre class="PROGRAMLISTING">$ <kbd class="USERINPUT">export PGOPTIONS="-P"</kbd>
+$ <kbd class="USERINPUT">psql broken_db</kbd>
+...
+broken_db=&gt; REINDEX DATABASE broken_db;
+broken_db=&gt; \q
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN79032" id="AEN79032"></a>
+
+  <h2>Compatibility</h2>
+
+  <p>There is no <tt class="COMMAND">REINDEX</tt> command in the
+  SQL standard.</p>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%">
+
+  <table summary="Footer navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td width="33%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-refreshmaterializedview.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-release-savepoint.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">REFRESH
+      MATERIALIZED VIEW</td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">RELEASE
+      SAVEPOINT</td>
+    </tr>
+  </tbody></table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br>
+Copyright © 1996-2013 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+
+
+</body></html>

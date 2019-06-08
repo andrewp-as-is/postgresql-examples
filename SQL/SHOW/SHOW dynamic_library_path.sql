@@ -1,0 +1,1 @@
+SHOW dynamic_library_path;

@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0065)http://www.postgresql.org/docs/9.3/static/sql-security-label.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PostgreSQL: Documentation: 9.3: SECURITY LABEL</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("/media/css/docs.css");</style>
+    <link rel="alternate stylesheet" media="screen" href="./9.3  SECURITY LABEL_files/docs_large.css" type="text/css" title="Large Text" disabled="">
+    <script type="text/javascript" async="" src="./9.3  SECURITY LABEL_files/ga.js"></script><script type="text/javascript" src="./9.3  SECURITY LABEL_files/styleswitcher.js"></script>
+    <script type="text/javascript" src="./9.3  SECURITY LABEL_files/monospacefix.js"></script></head><body><pre id="monotest" style="display: none;">&nbsp;</pre><p id="paratest" style="display: none;">&nbsp;</p><style type="text/css" media="screen">#docContainer tt, #docContainer pre, #docContainer code{font-size: 1.2em;}</style>
+
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="./9.3  SECURITY LABEL_files/hdr_logo.png" width="206" height="80" alt="PostgreSQL"></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.3/">
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value=&#39;&#39;;" value="Search"><input id="submit" type="submit" value="Search">
+	</div>
+	</form>
+        <div id="docTextSize">Text Size: <a href="http://www.postgresql.org/docs/9.3/static/sql-security-label.html#" onclick="setActiveStyleSheet(&#39;Normal Text&#39;); return false;" onkeypress="return false;" title="Normal Text Size">Normal</a> / <a href="http://www.postgresql.org/docs/9.3/static/sql-security-label.html#" onclick="setActiveStyleSheet(&#39;Large Text&#39;); return false;" onkeypress="return false;" title="Large Text Size">Large</a></div>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> → <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> → <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> → <a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3</a>
+</div>
+<div id="docVersions">
+
+This page in other versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/9.2/static/sql-security-label.html" title="This page in version 9.2">9.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.1/static/sql-security-label.html" title="This page in version 9.1">9.1</a>
+	
+
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<b>9.3</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/devel/static/sql-security-label.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="5" align="center" valign="bottom"><a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3beta2 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title="SAVEPOINT" href="http://www.postgresql.org/docs/9.3/static/sql-savepoint.html" accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title="SELECT" href="http://www.postgresql.org/docs/9.3/static/sql-select.html" accesskey="N">Next</a></td>
+    </tr>
+  </tbody></table>
+  <hr class="c1" width="100%">
+</div>
+
+<h1><a name="SQL-SECURITY-LABEL" id="SQL-SECURITY-LABEL"></a>SECURITY LABEL</h1>
+
+<div class="REFNAMEDIV">
+  <a name="AEN79528" id="AEN79528"></a>
+
+  <h2>Name</h2>SECURITY LABEL&nbsp;--&nbsp;define or change a
+  security label applied to an object
+</div>
+
+<div class="REFSYNOPSISDIV">
+  <a name="AEN79533" id="AEN79533"></a>
+
+  <h2>Synopsis</h2>
+  <pre class="SYNOPSIS">SECURITY LABEL [ FOR <tt class="REPLACEABLE c2">provider</tt> ] ON
+{
+  TABLE <tt class="REPLACEABLE c2">object_name</tt> |
+  COLUMN <tt class="REPLACEABLE c2">table_name</tt>.<tt class="REPLACEABLE c2">column_name</tt> |
+  AGGREGATE <tt class="REPLACEABLE c2">agg_name</tt> (<tt class="REPLACEABLE c2">agg_type</tt> [, ...] ) |
+  DATABASE <tt class="REPLACEABLE c2">object_name</tt> |
+  DOMAIN <tt class="REPLACEABLE c2">object_name</tt> |
+  EVENT TRIGGER <tt class="REPLACEABLE c2">object_name</tt> |
+  FOREIGN TABLE <tt class="REPLACEABLE c2">object_name</tt>
+  FUNCTION <tt class="REPLACEABLE c2">function_name</tt> ( [ [ <tt class="REPLACEABLE c2">argmode</tt> ] [ <tt class="REPLACEABLE c2">argname</tt> ] <tt class="REPLACEABLE c2">argtype</tt> [, ...] ] ) |
+  LARGE OBJECT <tt class="REPLACEABLE c2">large_object_oid</tt> |
+  MATERIALIZED VIEW <tt class="REPLACEABLE c2">object_name</tt> |
+  [ PROCEDURAL ] LANGUAGE <tt class="REPLACEABLE c2">object_name</tt> |
+  ROLE <tt class="REPLACEABLE c2">object_name</tt> |
+  SCHEMA <tt class="REPLACEABLE c2">object_name</tt> |
+  SEQUENCE <tt class="REPLACEABLE c2">object_name</tt> |
+  TABLESPACE <tt class="REPLACEABLE c2">object_name</tt> |
+  TYPE <tt class="REPLACEABLE c2">object_name</tt> |
+  VIEW <tt class="REPLACEABLE c2">object_name</tt>
+} IS '<tt class="REPLACEABLE c2">label</tt>'
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN79559" id="AEN79559"></a>
+
+  <h2>Description</h2>
+
+  <p><tt class="COMMAND">SECURITY LABEL</tt> applies a security
+  label to a database object. An arbitrary number of security
+  labels, one per label provider, can be associated with a given
+  database object. Label providers are loadable modules which
+  register themselves by using the function <code class="FUNCTION">register_label_provider</code>.</p>
+
+  <div class="NOTE">
+    <blockquote class="NOTE">
+      <p><b>Note:</b> <code class="FUNCTION">register_label_provider</code> is not an SQL
+      function; it can only be called from C code loaded into the
+      backend.</p>
+    </blockquote>
+  </div>
+
+  <p>The label provider determines whether a given label is valid
+  and whether it is permissible to assign that label to a given
+  object. The meaning of a given label is likewise at the
+  discretion of the label provider. <span class="PRODUCTNAME">PostgreSQL</span> places no restrictions on whether
+  or how a label provider must interpret security labels; it merely
+  provides a mechanism for storing them. In practice, this facility
+  is intended to allow integration with label-based mandatory
+  access control (MAC) systems such as <span class="PRODUCTNAME">SE-Linux</span>. Such systems make all access
+  control decisions based on object labels, rather than traditional
+  discretionary access control (DAC) concepts such as users and
+  groups.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN79570" id="AEN79570"></a>
+
+  <h2>Parameters</h2>
+
+  <div class="VARIABLELIST">
+    <dl>
+      <dt><tt class="REPLACEABLE c2">object_name</tt><br>
+      <tt class="REPLACEABLE c2">table_name.column_name</tt><br>
+      <tt class="REPLACEABLE c2">agg_name</tt><br>
+      <tt class="REPLACEABLE c2">function_name</tt></dt>
+
+      <dd>
+        <p>The name of the object to be labeled. Names of tables,
+        aggregates, domains, foreign tables, functions, sequences,
+        types, and views can be schema-qualified.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">provider</tt></dt>
+
+      <dd>
+        <p>The name of the provider with which this label is to be
+        associated. The named provider must be loaded and must
+        consent to the proposed labeling operation. If exactly one
+        provider is loaded, the provider name may be omitted for
+        brevity.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">arg_type</tt></dt>
+
+      <dd>
+        <p>An input data type on which the aggregate function
+        operates. To reference a zero-argument aggregate function,
+        write <tt class="LITERAL">*</tt> in place of the list of
+        input data types.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">argmode</tt></dt>
+
+      <dd>
+        <p>The mode of a function argument: <tt class="LITERAL">IN</tt>, <tt class="LITERAL">OUT</tt>, <tt class="LITERAL">INOUT</tt>, or <tt class="LITERAL">VARIADIC</tt>.
+        If omitted, the default is <tt class="LITERAL">IN</tt>.
+        Note that <tt class="COMMAND">SECURITY LABEL ON
+        FUNCTION</tt> does not actually pay any attention to
+        <tt class="LITERAL">OUT</tt> arguments, since only the
+        input arguments are needed to determine the function's
+        identity. So it is sufficient to list the <tt class="LITERAL">IN</tt>, <tt class="LITERAL">INOUT</tt>, and
+        <tt class="LITERAL">VARIADIC</tt> arguments.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">argname</tt></dt>
+
+      <dd>
+        <p>The name of a function argument. Note that <tt class="COMMAND">SECURITY LABEL ON FUNCTION</tt> does not actually
+        pay any attention to argument names, since only the
+        argument data types are needed to determine the function's
+        identity.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">argtype</tt></dt>
+
+      <dd>
+        <p>The data type(s) of the function's arguments (optionally
+        schema-qualified), if any.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">large_object_oid</tt></dt>
+
+      <dd>
+        <p>The OID of the large object.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">PROCEDURAL</tt></dt>
+
+      <dd>
+        <p>This is a noise word.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">label</tt></dt>
+
+      <dd>
+        <p>The new security label, written as a string literal; or
+        <tt class="LITERAL">NULL</tt> to drop the security
+        label.</p>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN79637" id="AEN79637"></a>
+
+  <h2>Examples</h2>
+
+  <p>The following example shows how the security label of a table
+  might be changed.</p>
+  <pre class="PROGRAMLISTING">SECURITY LABEL FOR selinux ON TABLE mytable IS 'system_u:object_r:sepgsql_table_t:s0';
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN79641" id="AEN79641"></a>
+
+  <h2>Compatibility</h2>
+
+  <p>There is no <tt class="COMMAND">SECURITY LABEL</tt> command in
+  the SQL standard.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN79645" id="AEN79645"></a>
+
+  <h2>See Also</h2><a href="http://www.postgresql.org/docs/9.3/static/sepgsql.html">sepgsql</a>, <a href="http://www.postgresql.org/docs/9.3/static/dummy-seclabel.html">dummy_seclabel</a>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%">
+
+  <table summary="Footer navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td width="33%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-savepoint.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-select.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">SAVEPOINT</td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">SELECT</td>
+    </tr>
+  </tbody></table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br>
+Copyright © 1996-2013 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+
+
+</body></html>

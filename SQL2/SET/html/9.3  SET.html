@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0054)http://www.postgresql.org/docs/9.3/static/sql-set.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PostgreSQL: Documentation: 9.3: SET</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("/media/css/docs.css");</style>
+    <link rel="alternate stylesheet" media="screen" href="./9.3  SET_files/docs_large.css" type="text/css" title="Large Text" disabled="">
+    <script type="text/javascript" async="" src="./9.3  SET_files/ga.js"></script><script type="text/javascript" src="./9.3  SET_files/styleswitcher.js"></script>
+    <script type="text/javascript" src="./9.3  SET_files/monospacefix.js"></script></head><body><pre id="monotest" style="display: none;">&nbsp;</pre><p id="paratest" style="display: none;">&nbsp;</p><style type="text/css" media="screen">#docContainer tt, #docContainer pre, #docContainer code{font-size: 1.2em;}</style>
+
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="./9.3  SET_files/hdr_logo.png" width="206" height="80" alt="PostgreSQL"></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.3/">
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value=&#39;&#39;;" value="Search"><input id="submit" type="submit" value="Search">
+	</div>
+	</form>
+        <div id="docTextSize">Text Size: <a href="http://www.postgresql.org/docs/9.3/static/sql-set.html#" onclick="setActiveStyleSheet(&#39;Normal Text&#39;); return false;" onkeypress="return false;" title="Normal Text Size">Normal</a> / <a href="http://www.postgresql.org/docs/9.3/static/sql-set.html#" onclick="setActiveStyleSheet(&#39;Large Text&#39;); return false;" onkeypress="return false;" title="Large Text Size">Large</a></div>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> → <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> → <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> → <a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3</a>
+</div>
+<div id="docVersions">
+
+This page in other versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/9.2/static/sql-set.html" title="This page in version 9.2">9.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.1/static/sql-set.html" title="This page in version 9.1">9.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.0/static/sql-set.html" title="This page in version 9.0">9.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.4/static/sql-set.html" title="This page in version 8.4">8.4</a>
+	
+
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<b>9.3</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.3/static/sql-set.html" title="This page in version 8.3" rel="nofollow">8.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.2/static/sql-set.html" title="This page in version 8.2" rel="nofollow">8.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.1/static/sql-set.html" title="This page in version 8.1" rel="nofollow">8.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.0/static/sql-set.html" title="This page in version 8.0" rel="nofollow">8.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.4/static/sql-set.html" title="This page in version 7.4" rel="nofollow">7.4</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.3/static/sql-set.html" title="This page in version 7.3" rel="nofollow">7.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.2/static/sql-set.html" title="This page in version 7.2" rel="nofollow">7.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.1/static/sql-set.html" title="This page in version 7.1" rel="nofollow">7.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/devel/static/sql-set.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="5" align="center" valign="bottom"><a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3beta2 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title="SELECT INTO" href="http://www.postgresql.org/docs/9.3/static/sql-selectinto.html" accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title="SET CONSTRAINTS" href="http://www.postgresql.org/docs/9.3/static/sql-set-constraints.html" accesskey="N">Next</a></td>
+    </tr>
+  </tbody></table>
+  <hr class="c1" width="100%">
+</div>
+
+<h1><a name="SQL-SET" id="SQL-SET"></a>SET</h1>
+
+<div class="REFNAMEDIV">
+  <a name="AEN80836" id="AEN80836"></a>
+
+  <h2>Name</h2>SET&nbsp;--&nbsp;change a run-time parameter
+</div>
+
+<div class="REFSYNOPSISDIV">
+  <a name="AEN80841" id="AEN80841"></a>
+
+  <h2>Synopsis</h2>
+  <pre class="SYNOPSIS">SET [ SESSION | LOCAL ] <tt class="REPLACEABLE c2">configuration_parameter</tt> { TO | = } { <tt class="REPLACEABLE c2">value</tt> | '<tt class="REPLACEABLE c2">value</tt>' | DEFAULT }
+SET [ SESSION | LOCAL ] TIME ZONE { <tt class="REPLACEABLE c2">timezone</tt> | LOCAL | DEFAULT }
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN80847" id="AEN80847"></a>
+
+  <h2>Description</h2>
+
+  <p>The <tt class="COMMAND">SET</tt> command changes run-time
+  configuration parameters. Many of the run-time parameters listed
+  in <a href="http://www.postgresql.org/docs/9.3/static/runtime-config.html">Chapter 18</a> can be changed
+  on-the-fly with <tt class="COMMAND">SET</tt>. (But some require
+  superuser privileges to change, and others cannot be changed
+  after server or session start.) <tt class="COMMAND">SET</tt> only
+  affects the value used by the current session.</p>
+
+  <p>If <tt class="COMMAND">SET</tt> (or equivalently <tt class="COMMAND">SET SESSION</tt>) is issued within a transaction that
+  is later aborted, the effects of the <tt class="COMMAND">SET</tt>
+  command disappear when the transaction is rolled back. Once the
+  surrounding transaction is committed, the effects will persist
+  until the end of the session, unless overridden by another
+  <tt class="COMMAND">SET</tt>.</p>
+
+  <p>The effects of <tt class="COMMAND">SET LOCAL</tt> last only
+  till the end of the current transaction, whether committed or
+  not. A special case is <tt class="COMMAND">SET</tt> followed by
+  <tt class="COMMAND">SET LOCAL</tt> within a single transaction:
+  the <tt class="COMMAND">SET LOCAL</tt> value will be seen until
+  the end of the transaction, but afterwards (if the transaction is
+  committed) the <tt class="COMMAND">SET</tt> value will take
+  effect.</p>
+
+  <p>The effects of <tt class="COMMAND">SET</tt> or <tt class="COMMAND">SET LOCAL</tt> are also canceled by rolling back to a
+  savepoint that is earlier than the command.</p>
+
+  <p>If <tt class="COMMAND">SET LOCAL</tt> is used within a
+  function that has a <tt class="LITERAL">SET</tt> option for the
+  same variable (see <a href="http://www.postgresql.org/docs/9.3/static/sql-createfunction.html">CREATE
+  FUNCTION</a>), the effects of the <tt class="COMMAND">SET
+  LOCAL</tt> command disappear at function exit; that is, the value
+  in effect when the function was called is restored anyway. This
+  allows <tt class="COMMAND">SET LOCAL</tt> to be used for dynamic
+  or repeated changes of a parameter within a function, while still
+  having the convenience of using the <tt class="LITERAL">SET</tt>
+  option to save and restore the caller's value. However, a regular
+  <tt class="COMMAND">SET</tt> command overrides any surrounding
+  function's <tt class="LITERAL">SET</tt> option; its effects will
+  persist unless rolled back.</p>
+
+  <div class="NOTE">
+    <blockquote class="NOTE">
+      <p><b>Note:</b> In <span class="PRODUCTNAME">PostgreSQL</span> versions 8.0 through 8.2, the
+      effects of a <tt class="COMMAND">SET LOCAL</tt> would be
+      canceled by releasing an earlier savepoint, or by successful
+      exit from a <span class="APPLICATION">PL/pgSQL</span>
+      exception block. This behavior has been changed because it
+      was deemed unintuitive.</p>
+    </blockquote>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN80882" id="AEN80882"></a>
+
+  <h2>Parameters</h2>
+
+  <div class="VARIABLELIST">
+    <dl>
+      <dt><tt class="LITERAL">SESSION</tt></dt>
+
+      <dd>
+        <p>Specifies that the command takes effect for the current
+        session. (This is the default if neither <tt class="LITERAL">SESSION</tt> nor <tt class="LITERAL">LOCAL</tt>
+        appears.)</p>
+      </dd>
+
+      <dt><tt class="LITERAL">LOCAL</tt></dt>
+
+      <dd>
+        <p>Specifies that the command takes effect for only the
+        current transaction. After <tt class="COMMAND">COMMIT</tt>
+        or <tt class="COMMAND">ROLLBACK</tt>, the session-level
+        setting takes effect again. Note that <tt class="COMMAND">SET LOCAL</tt> will appear to have no effect if
+        it is executed outside a <tt class="COMMAND">BEGIN</tt>
+        block, since the transaction will end immediately.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">configuration_parameter</tt></dt>
+
+      <dd>
+        <p>Name of a settable run-time parameter. Available
+        parameters are documented in <a href="http://www.postgresql.org/docs/9.3/static/runtime-config.html">Chapter 18</a> and below.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">value</tt></dt>
+
+      <dd>
+        <p>New value of parameter. Values can be specified as
+        string constants, identifiers, numbers, or comma-separated
+        lists of these, as appropriate for the particular
+        parameter. <tt class="LITERAL">DEFAULT</tt> can be written
+        to specify resetting the parameter to its default value
+        (that is, whatever value it would have had if no <tt class="COMMAND">SET</tt> had been executed in the current
+        session).</p>
+      </dd>
+    </dl>
+  </div>
+
+  <p>Besides the configuration parameters documented in <a href="http://www.postgresql.org/docs/9.3/static/runtime-config.html">Chapter 18</a>, there are a few that can
+  only be adjusted using the <tt class="COMMAND">SET</tt> command
+  or that have a special syntax:</p>
+
+  <div class="VARIABLELIST">
+    <dl>
+      <dt><tt class="LITERAL">SCHEMA</tt></dt>
+
+      <dd>
+        <p><tt class="LITERAL">SET SCHEMA '<tt class="REPLACEABLE c2">value</tt>'</tt> is an alias for
+        <tt class="LITERAL">SET search_path TO <tt class="REPLACEABLE c2">value</tt></tt>. Only one schema can be
+        specified using this syntax.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">NAMES</tt></dt>
+
+      <dd>
+        <p><tt class="LITERAL">SET NAMES <tt class="REPLACEABLE c2">value</tt></tt> is an alias for <tt class="LITERAL">SET client_encoding TO <tt class="REPLACEABLE c2">value</tt></tt>.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">SEED</tt></dt>
+
+      <dd>
+        <p>Sets the internal seed for the random number generator
+        (the function <code class="FUNCTION">random</code>).
+        Allowed values are floating-point numbers between -1 and 1,
+        which are then multiplied by 2<sup>31</sup>-1.</p>
+
+        <p>The seed can also be set by invoking the function
+        <code class="FUNCTION">setseed</code>:</p>
+        <pre class="PROGRAMLISTING">SELECT setseed(<tt class="REPLACEABLE c2">value</tt>);
+</pre>
+      </dd>
+
+      <dt><tt class="LITERAL">TIME ZONE</tt></dt>
+
+      <dd>
+        <p><tt class="LITERAL">SET TIME ZONE <tt class="REPLACEABLE c2">value</tt></tt> is an alias for <tt class="LITERAL">SET timezone TO <tt class="REPLACEABLE c2">value</tt></tt>. The syntax <tt class="LITERAL">SET TIME ZONE</tt> allows special syntax for the
+        time zone specification. Here are examples of valid
+        values:</p>
+
+        <div class="VARIABLELIST">
+          <dl>
+            <dt><tt class="LITERAL">'PST8PDT'</tt></dt>
+
+            <dd>
+              <p>The time zone for Berkeley, California.</p>
+            </dd>
+
+            <dt><tt class="LITERAL">'Europe/Rome'</tt></dt>
+
+            <dd>
+              <p>The time zone for Italy.</p>
+            </dd>
+
+            <dt><tt class="LITERAL">-7</tt></dt>
+
+            <dd>
+              <p>The time zone 7 hours west from UTC (equivalent to
+              PDT). Positive values are east from UTC.</p>
+            </dd>
+
+            <dt><tt class="LITERAL">INTERVAL '-08:00' HOUR TO
+            MINUTE</tt></dt>
+
+            <dd>
+              <p>The time zone 8 hours west from UTC (equivalent to
+              PST).</p>
+            </dd>
+
+            <dt><tt class="LITERAL">LOCAL</tt><br>
+            <tt class="LITERAL">DEFAULT</tt></dt>
+
+            <dd>
+              <p>Set the time zone to your local time zone (that
+              is, the server's default value of <tt class="VARNAME">timezone</tt>).</p>
+            </dd>
+          </dl>
+        </div>
+
+        <p>See <a href="http://www.postgresql.org/docs/9.3/static/datatype-datetime.html#DATATYPE-TIMEZONES">Section
+        8.5.3</a> for more information about time zones.</p>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN80987" id="AEN80987"></a>
+
+  <h2>Notes</h2>
+
+  <p>The function <code class="FUNCTION">set_config</code> provides
+  equivalent functionality; see <a href="http://www.postgresql.org/docs/9.3/static/functions-admin.html">Section 9.26</a>. Also, it is possible to
+  UPDATE the <a href="http://www.postgresql.org/docs/9.3/static/view-pg-settings.html"><tt class="STRUCTNAME">pg_settings</tt></a> system view to perform the
+  equivalent of <tt class="COMMAND">SET</tt>.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN80995" id="AEN80995"></a>
+
+  <h2>Examples</h2>
+
+  <p>Set the schema search path:</p>
+  <pre class="PROGRAMLISTING">SET search_path TO my_schema, public;
+</pre>
+
+  <p>Set the style of date to traditional <span class="PRODUCTNAME">POSTGRES</span> with <span class="QUOTE">"day
+  before month"</span> input convention:</p>
+  <pre class="SCREEN">SET datestyle TO postgres, dmy;
+</pre>
+
+  <p>Set the time zone for Berkeley, California:</p>
+  <pre class="SCREEN">SET TIME ZONE 'PST8PDT';
+</pre>
+
+  <p>Set the time zone for Italy:</p>
+  <pre class="SCREEN">SET TIME ZONE 'Europe/Rome';
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN81007" id="AEN81007"></a>
+
+  <h2>Compatibility</h2>
+
+  <p><tt class="LITERAL">SET TIME ZONE</tt> extends syntax defined
+  in the SQL standard. The standard allows only numeric time zone
+  offsets while <span class="PRODUCTNAME">PostgreSQL</span> allows
+  more flexible time-zone specifications. All other <tt class="LITERAL">SET</tt> features are <span class="PRODUCTNAME">PostgreSQL</span> extensions.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN81014" id="AEN81014"></a>
+
+  <h2>See Also</h2><a href="http://www.postgresql.org/docs/9.3/static/sql-reset.html">RESET</a>, <a href="http://www.postgresql.org/docs/9.3/static/sql-show.html">SHOW</a>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%">
+
+  <table summary="Footer navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td width="33%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-selectinto.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-set-constraints.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">SELECT INTO</td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">SET
+      CONSTRAINTS</td>
+    </tr>
+  </tbody></table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br>
+Copyright © 1996-2013 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+
+
+</body></html>

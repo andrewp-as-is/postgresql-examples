@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0058)http://www.postgresql.org/docs/9.3/static/sql-discard.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PostgreSQL: Documentation: 9.3: DISCARD</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("/media/css/docs.css");</style>
+    <link rel="alternate stylesheet" media="screen" href="./9.3  DISCARD_files/docs_large.css" type="text/css" title="Large Text" disabled="">
+    <script type="text/javascript" async="" src="./9.3  DISCARD_files/ga.js"></script><script type="text/javascript" src="./9.3  DISCARD_files/styleswitcher.js"></script>
+    <script type="text/javascript" src="./9.3  DISCARD_files/monospacefix.js"></script></head><body><pre id="monotest" style="display: none;">&nbsp;</pre><p id="paratest" style="display: none;">&nbsp;</p><style type="text/css" media="screen">#docContainer tt, #docContainer pre, #docContainer code{font-size: 1.2em;}</style>
+
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="./9.3  DISCARD_files/hdr_logo.png" width="206" height="80" alt="PostgreSQL"></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.3/">
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value=&#39;&#39;;" value="Search"><input id="submit" type="submit" value="Search">
+	</div>
+	</form>
+        <div id="docTextSize">Text Size: <a href="http://www.postgresql.org/docs/9.3/static/sql-discard.html#" onclick="setActiveStyleSheet(&#39;Normal Text&#39;); return false;" onkeypress="return false;" title="Normal Text Size">Normal</a> / <a href="http://www.postgresql.org/docs/9.3/static/sql-discard.html#" onclick="setActiveStyleSheet(&#39;Large Text&#39;); return false;" onkeypress="return false;" title="Large Text Size">Large</a></div>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> → <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> → <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> → <a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3</a>
+</div>
+<div id="docVersions">
+
+This page in other versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/9.2/static/sql-discard.html" title="This page in version 9.2">9.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.1/static/sql-discard.html" title="This page in version 9.1">9.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.0/static/sql-discard.html" title="This page in version 9.0">9.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.4/static/sql-discard.html" title="This page in version 8.4">8.4</a>
+	
+
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<b>9.3</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.3/static/sql-discard.html" title="This page in version 8.3" rel="nofollow">8.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/devel/static/sql-discard.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="5" align="center" valign="bottom"><a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3beta2 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title="DELETE" href="http://www.postgresql.org/docs/9.3/static/sql-delete.html" accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title="DO" href="http://www.postgresql.org/docs/9.3/static/sql-do.html" accesskey="N">Next</a></td>
+    </tr>
+  </tbody></table>
+  <hr class="c1" width="100%">
+</div>
+
+<h1><a name="SQL-DISCARD" id="SQL-DISCARD"></a>DISCARD</h1>
+
+<div class="REFNAMEDIV">
+  <a name="AEN75071" id="AEN75071"></a>
+
+  <h2>Name</h2>DISCARD&nbsp;--&nbsp;discard session state
+</div>
+
+<div class="REFSYNOPSISDIV">
+  <a name="AEN75076" id="AEN75076"></a>
+
+  <h2>Synopsis</h2>
+  <pre class="SYNOPSIS">DISCARD { ALL | PLANS | TEMPORARY | TEMP }
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN75078" id="AEN75078"></a>
+
+  <h2>Description</h2>
+
+  <p><tt class="COMMAND">DISCARD</tt> releases internal resources
+  associated with a database session. These resources are normally
+  released at the end of the session.</p>
+
+  <p><tt class="COMMAND">DISCARD TEMP</tt> drops all temporary
+  tables created in the current session. <tt class="COMMAND">DISCARD PLANS</tt> releases all internally cached query
+  plans. <tt class="COMMAND">DISCARD ALL</tt> resets a session to
+  its original state, discarding temporary resources and resetting
+  session-local configuration changes.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN75086" id="AEN75086"></a>
+
+  <h2>Parameters</h2>
+
+  <div class="VARIABLELIST">
+    <dl>
+      <dt><tt class="LITERAL">TEMPORARY</tt> or <tt class="LITERAL">TEMP</tt></dt>
+
+      <dd>
+        <p>Drops all temporary tables created in the current
+        session.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">PLANS</tt></dt>
+
+      <dd>
+        <p>Releases all cached query plans.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">ALL</tt></dt>
+
+      <dd>
+        <p>Releases all temporary resources associated with the
+        current session and resets the session to its initial
+        state. Currently, this has the same effect as executing the
+        following sequence of statements:</p>
+        <pre class="PROGRAMLISTING">SET SESSION AUTHORIZATION DEFAULT;
+RESET ALL;
+DEALLOCATE ALL;
+CLOSE ALL;
+UNLISTEN *;
+SELECT pg_advisory_unlock_all();
+DISCARD PLANS;
+DISCARD TEMP;
+</pre>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN75106" id="AEN75106"></a>
+
+  <h2>Notes</h2>
+
+  <p><tt class="COMMAND">DISCARD ALL</tt> cannot be executed inside
+  a transaction block.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN75110" id="AEN75110"></a>
+
+  <h2>Compatibility</h2>
+
+  <p><tt class="COMMAND">DISCARD</tt> is a <span class="PRODUCTNAME">PostgreSQL</span> extension.</p>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%">
+
+  <table summary="Footer navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td width="33%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-delete.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-do.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">DELETE</td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">DO</td>
+    </tr>
+  </tbody></table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br>
+Copyright © 1996-2013 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+
+
+</body></html>

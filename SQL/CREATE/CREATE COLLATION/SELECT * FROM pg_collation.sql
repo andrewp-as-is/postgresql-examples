@@ -1,0 +1,1 @@
+SELECT oid,* FROM pg_collation;

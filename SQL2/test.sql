@@ -1,0 +1,3 @@
+BEGIN
+DROP DOMAIN domname;
+END;

@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0050)http://www.postgresql.org/docs/9.3/static/spi.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PostgreSQL: Documentation: 9.3: Server Programming Interface</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("/media/css/docs.css");</style>
+    <link rel="alternate stylesheet" media="screen" href="./9.3  Server Programming Interface_files/docs_large.css" type="text/css" title="Large Text" disabled="">
+    <script type="text/javascript" async="" src="./9.3  Server Programming Interface_files/ga.js"></script><script type="text/javascript" src="./9.3  Server Programming Interface_files/styleswitcher.js"></script>
+    <script type="text/javascript" src="./9.3  Server Programming Interface_files/monospacefix.js"></script></head><body><pre id="monotest" style="display: none;">&nbsp;</pre><p id="paratest" style="display: none;">&nbsp;</p><style type="text/css" media="screen">#docContainer tt, #docContainer pre, #docContainer code{font-size: 1.2em;}</style>
+
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="./9.3  Server Programming Interface_files/hdr_logo.png" width="206" height="80" alt="PostgreSQL"></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.3/">
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value=&#39;&#39;;" value="Search"><input id="submit" type="submit" value="Search">
+	</div>
+	</form>
+        <div id="docTextSize">Text Size: <a href="http://www.postgresql.org/docs/9.3/static/spi.html#" onclick="setActiveStyleSheet(&#39;Normal Text&#39;); return false;" onkeypress="return false;" title="Normal Text Size">Normal</a> / <a href="http://www.postgresql.org/docs/9.3/static/spi.html#" onclick="setActiveStyleSheet(&#39;Large Text&#39;); return false;" onkeypress="return false;" title="Large Text Size">Large</a></div>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> → <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> → <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> → <a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3</a>
+</div>
+<div id="docVersions">
+
+This page in other versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/9.2/static/spi.html" title="This page in version 9.2">9.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.1/static/spi.html" title="This page in version 9.1">9.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.0/static/spi.html" title="This page in version 9.0">9.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.4/static/spi.html" title="This page in version 8.4">8.4</a>
+	
+
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<b>9.3</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.3/static/spi.html" title="This page in version 8.3" rel="nofollow">8.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.2/static/spi.html" title="This page in version 8.2" rel="nofollow">8.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.1/static/spi.html" title="This page in version 8.1" rel="nofollow">8.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.0/static/spi.html" title="This page in version 8.0" rel="nofollow">8.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.4/static/spi.html" title="This page in version 7.4" rel="nofollow">7.4</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.3/static/spi.html" title="This page in version 7.3" rel="nofollow">7.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.2/static/spi.html" title="This page in version 7.2" rel="nofollow">7.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.1/static/spi.html" title="This page in version 7.1" rel="nofollow">7.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/devel/static/spi.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="5" align="center" valign="bottom"><a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3beta2 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title="Environment Variables" href="http://www.postgresql.org/docs/9.3/static/plpython-envar.html" accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/server-programming.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title="Interface Functions" href="http://www.postgresql.org/docs/9.3/static/spi-interface.html" accesskey="N">Next</a></td>
+    </tr>
+  </tbody></table>
+  <hr class="c1" width="100%">
+</div>
+
+<div class="CHAPTER">
+  <h1><a name="SPI" id="SPI"></a>Chapter 44. Server Programming
+  Interface</h1>
+
+  <div class="TOC">
+    <dl>
+      <dt class="c2">Table of Contents</dt>
+
+      <dt>44.1. <a href="http://www.postgresql.org/docs/9.3/static/spi-interface.html">Interface
+      Functions</a></dt>
+
+      <dd>
+        <dl>
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-connect.html">SPI_connect</a>&nbsp;--&nbsp;connect
+          a procedure to the SPI manager</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-finish.html">SPI_finish</a>&nbsp;--&nbsp;disconnect
+          a procedure from the SPI manager</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-push.html">SPI_push</a>&nbsp;--&nbsp;push SPI
+          stack to allow recursive SPI usage</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-pop.html">SPI_pop</a>&nbsp;--&nbsp;pop SPI stack
+          to return from recursive SPI usage</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-execute.html">SPI_execute</a>&nbsp;--&nbsp;execute
+          a command</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-exec.html">SPI_exec</a>&nbsp;--&nbsp;execute a
+          read/write command</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-execute-with-args.html">SPI_execute_with_args</a>&nbsp;--&nbsp;execute
+          a command with out-of-line parameters</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-prepare.html">SPI_prepare</a>&nbsp;--&nbsp;prepare
+          a statement, without executing it yet</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-prepare-cursor.html">SPI_prepare_cursor</a>&nbsp;--&nbsp;prepare
+          a statement, without executing it yet</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-prepare-params.html">SPI_prepare_params</a>&nbsp;--&nbsp;prepare
+          a statement, without executing it yet</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-getargcount.html">SPI_getargcount</a>&nbsp;--&nbsp;return
+          the number of arguments needed by a statement prepared by
+          <code class="FUNCTION">SPI_prepare</code></dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-getargtypeid.html">SPI_getargtypeid</a>&nbsp;--&nbsp;return
+          the data type OID for an argument of a statement prepared
+          by <code class="FUNCTION">SPI_prepare</code></dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-is-cursor-plan.html">SPI_is_cursor_plan</a>&nbsp;--&nbsp;return
+          <tt class="SYMBOL">true</tt> if a statement prepared by
+          <code class="FUNCTION">SPI_prepare</code> can be used
+          with <code class="FUNCTION">SPI_cursor_open</code></dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-execute-plan.html">SPI_execute_plan</a>&nbsp;--&nbsp;execute
+          a statement prepared by <code class="FUNCTION">SPI_prepare</code></dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-execute-plan-with-paramlist.html">SPI_execute_plan_with_paramlist</a>&nbsp;--&nbsp;execute
+          a statement prepared by <code class="FUNCTION">SPI_prepare</code></dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-execp.html">SPI_execp</a>&nbsp;--&nbsp;execute a
+          statement in read/write mode</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-cursor-open.html">SPI_cursor_open</a>&nbsp;--&nbsp;set
+          up a cursor using a statement created with <code class="FUNCTION">SPI_prepare</code></dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-cursor-open-with-args.html">SPI_cursor_open_with_args</a>&nbsp;--&nbsp;set
+          up a cursor using a query and parameters</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-cursor-open-with-paramlist.html">SPI_cursor_open_with_paramlist</a>&nbsp;--&nbsp;set
+          up a cursor using parameters</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-cursor-find.html">SPI_cursor_find</a>&nbsp;--&nbsp;find
+          an existing cursor by name</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-cursor-fetch.html">SPI_cursor_fetch</a>&nbsp;--&nbsp;fetch
+          some rows from a cursor</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-cursor-move.html">SPI_cursor_move</a>&nbsp;--&nbsp;move
+          a cursor</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-scroll-cursor-fetch.html">SPI_scroll_cursor_fetch</a>&nbsp;--&nbsp;fetch
+          some rows from a cursor</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-scroll-cursor-move.html">SPI_scroll_cursor_move</a>&nbsp;--&nbsp;move
+          a cursor</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-cursor-close.html">SPI_cursor_close</a>&nbsp;--&nbsp;close
+          a cursor</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-keepplan.html">SPI_keepplan</a>&nbsp;--&nbsp;save
+          a prepared statement</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-saveplan.html">SPI_saveplan</a>&nbsp;--&nbsp;save
+          a prepared statement</dt>
+        </dl>
+      </dd>
+
+      <dt>44.2. <a href="http://www.postgresql.org/docs/9.3/static/spi-interface-support.html">Interface
+      Support Functions</a></dt>
+
+      <dd>
+        <dl>
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-fname.html">SPI_fname</a>&nbsp;--&nbsp;determine
+          the column name for the specified column number</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-fnumber.html">SPI_fnumber</a>&nbsp;--&nbsp;determine
+          the column number for the specified column name</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-getvalue.html">SPI_getvalue</a>&nbsp;--&nbsp;return
+          the string value of the specified column</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-getbinval.html">SPI_getbinval</a>&nbsp;--&nbsp;return
+          the binary value of the specified column</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-gettype.html">SPI_gettype</a>&nbsp;--&nbsp;return
+          the data type name of the specified column</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-gettypeid.html">SPI_gettypeid</a>&nbsp;--&nbsp;return
+          the data type <acronym class="ACRONYM">OID</acronym> of
+          the specified column</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-getrelname.html">SPI_getrelname</a>&nbsp;--&nbsp;return
+          the name of the specified relation</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-getnspname.html">SPI_getnspname</a>&nbsp;--&nbsp;return
+          the namespace of the specified relation</dt>
+        </dl>
+      </dd>
+
+      <dt>44.3. <a href="http://www.postgresql.org/docs/9.3/static/spi-memory.html">Memory
+      Management</a></dt>
+
+      <dd>
+        <dl>
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-palloc.html">SPI_palloc</a>&nbsp;--&nbsp;allocate
+          memory in the upper executor context</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-realloc.html">SPI_repalloc</a>&nbsp;--&nbsp;reallocate
+          memory in the upper executor context</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-pfree.html">SPI_pfree</a>&nbsp;--&nbsp;free
+          memory in the upper executor context</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-copytuple.html">SPI_copytuple</a>&nbsp;--&nbsp;make
+          a copy of a row in the upper executor context</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-returntuple.html">SPI_returntuple</a>&nbsp;--&nbsp;prepare
+          to return a tuple as a Datum</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-modifytuple.html">SPI_modifytuple</a>&nbsp;--&nbsp;create
+          a row by replacing selected fields of a given row</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-freetuple.html">SPI_freetuple</a>&nbsp;--&nbsp;free
+          a row allocated in the upper executor context</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-freetupletable.html">SPI_freetuptable</a>&nbsp;--&nbsp;free
+          a row set created by <code class="FUNCTION">SPI_execute</code> or a similar function</dt>
+
+          <dt><a href="http://www.postgresql.org/docs/9.3/static/spi-spi-freeplan.html">SPI_freeplan</a>&nbsp;--&nbsp;free
+          a previously saved prepared statement</dt>
+        </dl>
+      </dd>
+
+      <dt>44.4. <a href="http://www.postgresql.org/docs/9.3/static/spi-visibility.html">Visibility of Data
+      Changes</a></dt>
+
+      <dt>44.5. <a href="http://www.postgresql.org/docs/9.3/static/spi-examples.html">Examples</a></dt>
+    </dl>
+  </div>
+
+  <p>The <i class="FIRSTTERM">Server Programming Interface</i>
+  (<acronym class="ACRONYM">SPI</acronym>) gives writers of
+  user-defined <acronym class="ACRONYM">C</acronym> functions the
+  ability to run <acronym class="ACRONYM">SQL</acronym> commands
+  inside their functions. <acronym class="ACRONYM">SPI</acronym> is
+  a set of interface functions to simplify access to the parser,
+  planner, and executor. <acronym class="ACRONYM">SPI</acronym>
+  also does some memory management.</p>
+
+  <div class="NOTE">
+    <blockquote class="NOTE">
+      <p><b>Note:</b> The available procedural languages provide
+      various means to execute SQL commands from procedures. Most
+      of these facilities are based on SPI, so this documentation
+      might be of use for users of those languages as well.</p>
+    </blockquote>
+  </div>
+
+  <p>To avoid misunderstanding we'll use the term <span class="QUOTE">"function"</span> when we speak of <acronym class="ACRONYM">SPI</acronym> interface functions and <span class="QUOTE">"procedure"</span> for a user-defined C-function that is
+  using <acronym class="ACRONYM">SPI</acronym>.</p>
+
+  <p>Note that if a command invoked via SPI fails, then control
+  will not be returned to your procedure. Rather, the transaction
+  or subtransaction in which your procedure executes will be rolled
+  back. (This might seem surprising given that the SPI functions
+  mostly have documented error-return conventions. Those
+  conventions only apply for errors detected within the SPI
+  functions themselves, however.) It is possible to recover control
+  after an error by establishing your own subtransaction
+  surrounding SPI calls that might fail. This is not currently
+  documented because the mechanisms required are still in flux.</p>
+
+  <p><acronym class="ACRONYM">SPI</acronym> functions return a
+  nonnegative result on success (either via a returned integer
+  value or in the global variable <tt class="VARNAME">SPI_result</tt>, as described below). On error, a
+  negative result or <tt class="SYMBOL">NULL</tt> will be
+  returned.</p>
+
+  <p>Source code files that use SPI must include the header file
+  <tt class="FILENAME">executor/spi.h</tt>.</p>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%">
+
+  <table summary="Footer navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td width="33%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/plpython-envar.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/spi-interface.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">Environment
+      Variables</td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/server-programming.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">Interface
+      Functions</td>
+    </tr>
+  </tbody></table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br>
+Copyright © 1996-2013 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+
+
+</body></html>

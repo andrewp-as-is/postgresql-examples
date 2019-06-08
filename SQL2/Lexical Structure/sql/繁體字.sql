@@ -1,0 +1,3 @@
+CREATE SCHEMA 繁體字;
+
+DROP SCHEMA 繁體字;

@@ -1,0 +1,4 @@
+CREATE SEQUENCE name;
+
+DROP SEQUENCE name;
+

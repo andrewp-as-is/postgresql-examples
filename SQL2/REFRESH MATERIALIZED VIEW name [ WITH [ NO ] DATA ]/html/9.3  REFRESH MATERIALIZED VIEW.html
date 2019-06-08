@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0074)http://www.postgresql.org/docs/9.3/static/sql-refreshmaterializedview.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PostgreSQL: Documentation: 9.3: REFRESH MATERIALIZED VIEW</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("/media/css/docs.css");</style>
+    <link rel="alternate stylesheet" media="screen" href="./9.3  REFRESH MATERIALIZED VIEW_files/docs_large.css" type="text/css" title="Large Text" disabled="">
+    <script type="text/javascript" async="" src="./9.3  REFRESH MATERIALIZED VIEW_files/ga.js"></script><script type="text/javascript" src="./9.3  REFRESH MATERIALIZED VIEW_files/styleswitcher.js"></script>
+    <script type="text/javascript" src="./9.3  REFRESH MATERIALIZED VIEW_files/monospacefix.js"></script></head><body><pre id="monotest" style="display: none;">&nbsp;</pre><p id="paratest" style="display: none;">&nbsp;</p><style type="text/css" media="screen">#docContainer tt, #docContainer pre, #docContainer code{font-size: 1.2em;}</style>
+
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="./9.3  REFRESH MATERIALIZED VIEW_files/hdr_logo.png" width="206" height="80" alt="PostgreSQL"></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.3/">
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value=&#39;&#39;;" value="Search"><input id="submit" type="submit" value="Search">
+	</div>
+	</form>
+        <div id="docTextSize">Text Size: <a href="http://www.postgresql.org/docs/9.3/static/sql-refreshmaterializedview.html#" onclick="setActiveStyleSheet(&#39;Normal Text&#39;); return false;" onkeypress="return false;" title="Normal Text Size">Normal</a> / <a href="http://www.postgresql.org/docs/9.3/static/sql-refreshmaterializedview.html#" onclick="setActiveStyleSheet(&#39;Large Text&#39;); return false;" onkeypress="return false;" title="Large Text Size">Large</a></div>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> → <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> → <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> → <a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3</a>
+</div>
+<div id="docVersions">
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<b>9.3</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/devel/static/sql-refreshmaterializedview.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th colspan="5" align="center" valign="bottom"><a href="http://www.postgresql.org/docs/9.3/static/index.html">PostgreSQL 9.3beta2 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title="REASSIGN OWNED" href="http://www.postgresql.org/docs/9.3/static/sql-reassign-owned.html" accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title="REINDEX" href="http://www.postgresql.org/docs/9.3/static/sql-reindex.html" accesskey="N">Next</a></td>
+    </tr>
+  </tbody></table>
+  <hr class="c1" width="100%">
+</div>
+
+<h1><a name="SQL-REFRESHMATERIALIZEDVIEW" id="SQL-REFRESHMATERIALIZEDVIEW"></a>REFRESH MATERIALIZED VIEW</h1>
+
+<div class="REFNAMEDIV">
+  <a name="AEN78862" id="AEN78862"></a>
+
+  <h2>Name</h2>REFRESH MATERIALIZED VIEW&nbsp;--&nbsp;replace the
+  contents of a materialized view
+</div>
+
+<div class="REFSYNOPSISDIV">
+  <a name="AEN78867" id="AEN78867"></a>
+
+  <h2>Synopsis</h2>
+  <pre class="SYNOPSIS">REFRESH MATERIALIZED VIEW <tt class="REPLACEABLE c2">name</tt>
+    [ WITH [ NO ] DATA ]
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78870" id="AEN78870"></a>
+
+  <h2>Description</h2>
+
+  <p><tt class="COMMAND">REFRESH MATERIALIZED VIEW</tt> completely
+  replaces the contents of a materialized view. The old contents
+  are discarded. If <tt class="LITERAL">WITH DATA</tt> is specified
+  (or defaults) the backing query is executed to provide the new
+  data, and the materialized view is left in a scannable state. If
+  <tt class="LITERAL">WITH NO DATA</tt> is specified no new data is
+  generated and the materialized view is left in an unscannable
+  state.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78876" id="AEN78876"></a>
+
+  <h2>Parameters</h2>
+
+  <div class="VARIABLELIST">
+    <dl>
+      <dt><tt class="REPLACEABLE c2">name</tt></dt>
+
+      <dd>
+        <p>The name (optionally schema-qualified) of the
+        materialized view to refresh.</p>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78884" id="AEN78884"></a>
+
+  <h2>Notes</h2>
+
+  <p>While the default index for future <a href="http://www.postgresql.org/docs/9.3/static/sql-cluster.html">CLUSTER</a> operations is retained, <tt class="COMMAND">REFRESH MATERIALIZED VIEW</tt> does not order the
+  generated rows based on this property. If you want the data to be
+  ordered upon generation, you must use an <tt class="LITERAL">ORDER BY</tt> clause in the backing query.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78890" id="AEN78890"></a>
+
+  <h2>Examples</h2>
+
+  <p>This command will replace the contents of the materialized
+  view called <tt class="LITERAL">order_summary</tt> using the
+  query from the materialized view's definition, and leave it in a
+  scannable state:</p>
+  <pre class="PROGRAMLISTING">REFRESH MATERIALIZED VIEW order_summary;
+</pre>
+
+  <p>This command will free storage associated with the
+  materialized view <tt class="LITERAL">annual_statistics_basis</tt> and leave it in an
+  unscannable state:</p>
+  <pre class="PROGRAMLISTING">REFRESH MATERIALIZED VIEW annual_statistics_basis WITH NO DATA;
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78898" id="AEN78898"></a>
+
+  <h2>Compatibility</h2>
+
+  <p><tt class="COMMAND">REFRESH MATERIALIZED VIEW</tt> is a
+  <span class="PRODUCTNAME">PostgreSQL</span> extension.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN78903" id="AEN78903"></a>
+
+  <h2>See Also</h2><a href="http://www.postgresql.org/docs/9.3/static/sql-creatematerializedview.html">CREATE
+  MATERIALIZED VIEW</a>, <a href="http://www.postgresql.org/docs/9.3/static/sql-altermaterializedview.html">ALTER MATERIALIZED VIEW</a>,
+  <a href="http://www.postgresql.org/docs/9.3/static/sql-dropmaterializedview.html">DROP MATERIALIZED
+  VIEW</a>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%">
+
+  <table summary="Footer navigation table" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td width="33%" align="left" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-reassign-owned.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-reindex.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">REASSIGN OWNED</td>
+
+      <td width="34%" align="center" valign="top"><a href="http://www.postgresql.org/docs/9.3/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">REINDEX</td>
+    </tr>
+  </tbody></table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br>
+Copyright © 1996-2013 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+
+
+</body></html>

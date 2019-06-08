@@ -1,0 +1,1 @@
+SHOW statement_timeout;
